@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bootstrap_app/gen/strings.g.dart';
+import 'package:health_monitor_app_flutter/gen/strings.g.dart';
 
 extension TranslationExtensions on BuildContext {
   /// Returns the current translations from the given [context].
