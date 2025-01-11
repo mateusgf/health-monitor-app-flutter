@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bootstrap_app/extensions/context.extensions.dart';
+import 'package:health_monitor_app_flutter/extensions/context.extensions.dart';
 
 /// Errors exposed for password validation
 enum ValidatePasswordError {

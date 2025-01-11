@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter_bootstrap_app",
+            "name": "health_monitor_app_flutter",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "flutter_bootstrap_app (profile mode)",
+            "name": "health_monitor_app_flutter (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "flutter_bootstrap_app (release mode)",
+            "name": "health_monitor_app_flutter (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

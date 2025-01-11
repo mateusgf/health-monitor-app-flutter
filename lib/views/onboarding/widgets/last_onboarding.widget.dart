@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bootstrap_app/extensions/button.extension.dart';
+import 'package:health_monitor_app_flutter/extensions/button.extension.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// This is an example of a last onboarding screen

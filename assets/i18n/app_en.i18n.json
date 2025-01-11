@@ -1,5 +1,5 @@
 {
-    "appName": "Flutter Bootstrap",
+    "appName": "health_monitor_app_flutter",
     "errors": {
         "email" : {
             "empty": "We need your email address",

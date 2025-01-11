@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bootstrap_app/views/home/home.screen.dart';
-import 'package:flutter_bootstrap_app/views/login/login.screen.dart';
-import 'package:flutter_bootstrap_app/views/onboarding/onboarding.screen.dart';
-import 'package:flutter_bootstrap_app/views/splash/splash.screen.dart';
-import 'package:flutter_bootstrap_app/views/subscriptions/subscriptions.screen.dart';
+import 'package:health_monitor_app_flutter/views/home/home.screen.dart';
+import 'package:health_monitor_app_flutter/views/login/login.screen.dart';
+import 'package:health_monitor_app_flutter/views/onboarding/onboarding.screen.dart';
+import 'package:health_monitor_app_flutter/views/splash/splash.screen.dart';
+import 'package:health_monitor_app_flutter/views/subscriptions/subscriptions.screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,7 +28,7 @@ String appRoutesPath(AppRoute route, {String? id}) => switch (route) {
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: appRoutesPath(AppRoute.splash),
+    initialLocation: appRoutesPath(AppRoute.home),
     routes: [
       GoRoute(
         path: appRoutesPath(AppRoute.splash),

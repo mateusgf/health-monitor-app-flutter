@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bootstrap_app/extensions/context.extensions.dart';
+import 'package:health_monitor_app_flutter/extensions/context.extensions.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 
 extension RevenueCatLabelsExtensions on PackageType {
