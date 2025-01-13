@@ -46,7 +46,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  freezed: ^2.4.7
+  freezed: ^2.5.7
   riverpod_generator: ^2.6.1
   build_runner: ^2.4.8
   custom_lint: ^0.6.0
