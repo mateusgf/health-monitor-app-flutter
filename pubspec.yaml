@@ -52,7 +52,7 @@ dev_dependencies:
   custom_lint: ^0.6.0
   riverpod_lint: ^2.3.9
   json_serializable: ^6.9.0
-  slang_build_runner: ^3.29.0
+  slang_build_runner: ^3.32.0
 
 flutter:
   uses-material-design: true
