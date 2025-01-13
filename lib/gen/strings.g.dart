@@ -3,10 +3,10 @@
 /// Original: assets/i18n
 /// To regenerate, run: `dart run slang`
 ///
-/// Locales: 2
-/// Strings: 40 (20 per locale)
+/// Locales: 3
+/// Strings: 60 (20 per locale)
 ///
-/// Built on 2024-05-27 at 19:36 UTC
+/// Built on 2025-01-12 at 18:20 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -26,7 +26,8 @@ const AppLocale _baseLocale = AppLocale.en;
 /// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
 	en(languageCode: 'en', build: Translations.build),
-	fr(languageCode: 'fr', build: _StringsFr.build);
+	es(languageCode: 'es', build: _StringsEs.build),
+	pt(languageCode: 'pt', build: _StringsPt.build);
 
 	const AppLocale({required this.languageCode, this.scriptCode, this.countryCode, required this.build}); // ignore: unused_element
 
@@ -148,7 +149,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
-	String get appName => 'Flutter Bootstrap';
+	String get appName => 'health_monitor_app_flutter';
 	late final _StringsErrorsEn errors = _StringsErrorsEn._(_root);
 	late final _StringsSubscriptionsEn subscriptions = _StringsSubscriptionsEn._(_root);
 }
@@ -239,13 +240,13 @@ class _StringsSubscriptionsPeriodunitEn {
 }
 
 // Path: <root>
-class _StringsFr implements Translations {
+class _StringsEs implements Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsFr.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	_StringsEs.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
-		    locale: AppLocale.fr,
+		    locale: AppLocale.es,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
@@ -253,102 +254,216 @@ class _StringsFr implements Translations {
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
-	/// Metadata for the translations of <fr>.
+	/// Metadata for the translations of <es>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
 	@override dynamic operator[](String key) => $meta.getTranslation(key);
 
-	@override late final _StringsFr _root = this; // ignore: unused_field
+	@override late final _StringsEs _root = this; // ignore: unused_field
 
 	// Translations
-	@override String get appName => 'Flutter Bootstrap';
-	@override late final _StringsErrorsFr errors = _StringsErrorsFr._(_root);
-	@override late final _StringsSubscriptionsFr subscriptions = _StringsSubscriptionsFr._(_root);
+	@override String get appName => 'health_monitor_app_flutter';
+	@override late final _StringsErrorsEs errors = _StringsErrorsEs._(_root);
+	@override late final _StringsSubscriptionsEs subscriptions = _StringsSubscriptionsEs._(_root);
 }
 
 // Path: errors
-class _StringsErrorsFr implements _StringsErrorsEn {
-	_StringsErrorsFr._(this._root);
+class _StringsErrorsEs implements _StringsErrorsEn {
+	_StringsErrorsEs._(this._root);
 
-	@override final _StringsFr _root; // ignore: unused_field
+	@override final _StringsEs _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsErrorsEmailFr email = _StringsErrorsEmailFr._(_root);
-	@override late final _StringsErrorsPasswordFr password = _StringsErrorsPasswordFr._(_root);
+	@override late final _StringsErrorsEmailEs email = _StringsErrorsEmailEs._(_root);
+	@override late final _StringsErrorsPasswordEs password = _StringsErrorsPasswordEs._(_root);
 }
 
 // Path: subscriptions
-class _StringsSubscriptionsFr implements _StringsSubscriptionsEn {
-	_StringsSubscriptionsFr._(this._root);
+class _StringsSubscriptionsEs implements _StringsSubscriptionsEn {
+	_StringsSubscriptionsEs._(this._root);
 
-	@override final _StringsFr _root; // ignore: unused_field
+	@override final _StringsEs _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsSubscriptionsDurationFr duration = _StringsSubscriptionsDurationFr._(_root);
-	@override late final _StringsSubscriptionsPeriodunitFr periodunit = _StringsSubscriptionsPeriodunitFr._(_root);
+	@override late final _StringsSubscriptionsDurationEs duration = _StringsSubscriptionsDurationEs._(_root);
+	@override late final _StringsSubscriptionsPeriodunitEs periodunit = _StringsSubscriptionsPeriodunitEs._(_root);
 }
 
 // Path: errors.email
-class _StringsErrorsEmailFr implements _StringsErrorsEmailEn {
-	_StringsErrorsEmailFr._(this._root);
+class _StringsErrorsEmailEs implements _StringsErrorsEmailEn {
+	_StringsErrorsEmailEs._(this._root);
 
-	@override final _StringsFr _root; // ignore: unused_field
+	@override final _StringsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get empty => 'Nous avons besoin de votre adresse email';
-	@override String get invalid => 'Il semblerait que votre adresse email ne soit pas valide';
+	@override String get empty => 'Necesitamos tu dirección de correo electrónico';
+	@override String get invalid => 'Parece que tu dirección de correo electrónico no es válida';
 }
 
 // Path: errors.password
-class _StringsErrorsPasswordFr implements _StringsErrorsPasswordEn {
-	_StringsErrorsPasswordFr._(this._root);
+class _StringsErrorsPasswordEs implements _StringsErrorsPasswordEn {
+	_StringsErrorsPasswordEs._(this._root);
 
-	@override final _StringsFr _root; // ignore: unused_field
+	@override final _StringsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get empty => 'Nous avons besoin de votre mot de passe';
-	@override String get invalid => 'Votre mot de passe doit contenir au moins 6 caractères';
+	@override String get empty => 'Necesitamos una contraseña segura';
+	@override String get invalid => 'Su contraseña debe contener al menos 6 caracteres.';
 }
 
 // Path: subscriptions.duration
-class _StringsSubscriptionsDurationFr implements _StringsSubscriptionsDurationEn {
-	_StringsSubscriptionsDurationFr._(this._root);
+class _StringsSubscriptionsDurationEs implements _StringsSubscriptionsDurationEn {
+	_StringsSubscriptionsDurationEs._(this._root);
 
-	@override final _StringsFr _root; // ignore: unused_field
+	@override final _StringsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get lifetime => 'A vie';
-	@override String get annual => 'Tous les year';
-	@override String get sixMonth => 'Tous les 6 mois';
-	@override String get threeMonth => 'Tous les 3 mois';
-	@override String get twoMonth => 'Tous les 2 mois';
-	@override String get monthly => 'Tous les mois';
-	@override String get weekly => 'Toutes les semaines';
+	@override String get lifetime => 'Vida';
+	@override String get annual => 'Anual';
+	@override String get sixMonth => 'Semestral';
+	@override String get threeMonth => 'Trimestral';
+	@override String get twoMonth => 'Cada 2 meses';
+	@override String get monthly => 'Mensual';
+	@override String get weekly => 'Semanalmente';
 }
 
 // Path: subscriptions.periodunit
-class _StringsSubscriptionsPeriodunitFr implements _StringsSubscriptionsPeriodunitEn {
-	_StringsSubscriptionsPeriodunitFr._(this._root);
+class _StringsSubscriptionsPeriodunitEs implements _StringsSubscriptionsPeriodunitEn {
+	_StringsSubscriptionsPeriodunitEs._(this._root);
 
-	@override final _StringsFr _root; // ignore: unused_field
+	@override final _StringsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String day({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('fr'))(n,
-		one: 'Jour',
-		other: 'Jours',
+	@override String day({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('es'))(n,
+		one: 'Día',
+		other: 'Días',
 	);
-	@override String week({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('fr'))(n,
-		one: 'Semaine',
-		other: 'Semaines',
+	@override String week({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('es'))(n,
+		one: 'Semana',
+		other: 'Semanas',
 	);
-	@override String month({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('fr'))(n,
-		one: 'Mois',
-		other: 'Mois',
+	@override String month({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('es'))(n,
+		one: 'Mes',
+		other: 'Meses',
 	);
-	@override String year({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('fr'))(n,
-		one: 'An',
-		other: 'Ans',
+	@override String year({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('es'))(n,
+		one: 'Año',
+		other: 'Años',
+	);
+}
+
+// Path: <root>
+class _StringsPt implements Translations {
+	/// You can call this constructor and build your own translation instance of this locale.
+	/// Constructing via the enum [AppLocale.build] is preferred.
+	_StringsPt.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = TranslationMetadata(
+		    locale: AppLocale.pt,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ) {
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <pt>.
+	@override final TranslationMetadata<AppLocale, Translations> $meta;
+
+	/// Access flat map
+	@override dynamic operator[](String key) => $meta.getTranslation(key);
+
+	@override late final _StringsPt _root = this; // ignore: unused_field
+
+	// Translations
+	@override String get appName => 'health_monitor_app_flutter';
+	@override late final _StringsErrorsPt errors = _StringsErrorsPt._(_root);
+	@override late final _StringsSubscriptionsPt subscriptions = _StringsSubscriptionsPt._(_root);
+}
+
+// Path: errors
+class _StringsErrorsPt implements _StringsErrorsEn {
+	_StringsErrorsPt._(this._root);
+
+	@override final _StringsPt _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsErrorsEmailPt email = _StringsErrorsEmailPt._(_root);
+	@override late final _StringsErrorsPasswordPt password = _StringsErrorsPasswordPt._(_root);
+}
+
+// Path: subscriptions
+class _StringsSubscriptionsPt implements _StringsSubscriptionsEn {
+	_StringsSubscriptionsPt._(this._root);
+
+	@override final _StringsPt _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsSubscriptionsDurationPt duration = _StringsSubscriptionsDurationPt._(_root);
+	@override late final _StringsSubscriptionsPeriodunitPt periodunit = _StringsSubscriptionsPeriodunitPt._(_root);
+}
+
+// Path: errors.email
+class _StringsErrorsEmailPt implements _StringsErrorsEmailEn {
+	_StringsErrorsEmailPt._(this._root);
+
+	@override final _StringsPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get empty => 'Precisamos do seu endereço de e-mail';
+	@override String get invalid => 'Parece que seu endereço de e-mail é inválido';
+}
+
+// Path: errors.password
+class _StringsErrorsPasswordPt implements _StringsErrorsPasswordEn {
+	_StringsErrorsPasswordPt._(this._root);
+
+	@override final _StringsPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get empty => 'Precisamos de uma senha forte';
+	@override String get invalid => 'Sua senha precisa conter pelo menos 6 caracteres';
+}
+
+// Path: subscriptions.duration
+class _StringsSubscriptionsDurationPt implements _StringsSubscriptionsDurationEn {
+	_StringsSubscriptionsDurationPt._(this._root);
+
+	@override final _StringsPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get lifetime => 'Vitalício';
+	@override String get annual => 'Anual';
+	@override String get sixMonth => 'Semestral';
+	@override String get threeMonth => 'Trimestral';
+	@override String get twoMonth => 'A cada 2 meses';
+	@override String get monthly => 'Mensual';
+	@override String get weekly => 'Semanalmente';
+}
+
+// Path: subscriptions.periodunit
+class _StringsSubscriptionsPeriodunitPt implements _StringsSubscriptionsPeriodunitEn {
+	_StringsSubscriptionsPeriodunitPt._(this._root);
+
+	@override final _StringsPt _root; // ignore: unused_field
+
+	// Translations
+	@override String day({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('pt'))(n,
+		one: 'Dia',
+		other: 'Dias',
+	);
+	@override String week({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('pt'))(n,
+		one: 'Semana',
+		other: 'Semanas',
+	);
+	@override String month({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('pt'))(n,
+		one: 'Mês',
+		other: 'Meses',
+	);
+	@override String year({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('pt'))(n,
+		one: 'Ano',
+		other: 'Anos',
 	);
 }
 
@@ -358,7 +473,7 @@ class _StringsSubscriptionsPeriodunitFr implements _StringsSubscriptionsPeriodun
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'appName': return 'Flutter Bootstrap';
+			case 'appName': return 'health_monitor_app_flutter';
 			case 'errors.email.empty': return 'We need your email address';
 			case 'errors.email.invalid': return 'It looks like your email address is not valid';
 			case 'errors.password.empty': return 'We need your password';
@@ -391,36 +506,72 @@ extension on Translations {
 	}
 }
 
-extension on _StringsFr {
+extension on _StringsEs {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'appName': return 'Flutter Bootstrap';
-			case 'errors.email.empty': return 'Nous avons besoin de votre adresse email';
-			case 'errors.email.invalid': return 'Il semblerait que votre adresse email ne soit pas valide';
-			case 'errors.password.empty': return 'Nous avons besoin de votre mot de passe';
-			case 'errors.password.invalid': return 'Votre mot de passe doit contenir au moins 6 caractères';
-			case 'subscriptions.duration.lifetime': return 'A vie';
-			case 'subscriptions.duration.annual': return 'Tous les year';
-			case 'subscriptions.duration.sixMonth': return 'Tous les 6 mois';
-			case 'subscriptions.duration.threeMonth': return 'Tous les 3 mois';
-			case 'subscriptions.duration.twoMonth': return 'Tous les 2 mois';
-			case 'subscriptions.duration.monthly': return 'Tous les mois';
-			case 'subscriptions.duration.weekly': return 'Toutes les semaines';
-			case 'subscriptions.periodunit.day': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('fr'))(n,
-				one: 'Jour',
-				other: 'Jours',
+			case 'appName': return 'health_monitor_app_flutter';
+			case 'errors.email.empty': return 'Necesitamos tu dirección de correo electrónico';
+			case 'errors.email.invalid': return 'Parece que tu dirección de correo electrónico no es válida';
+			case 'errors.password.empty': return 'Necesitamos una contraseña segura';
+			case 'errors.password.invalid': return 'Su contraseña debe contener al menos 6 caracteres.';
+			case 'subscriptions.duration.lifetime': return 'Vida';
+			case 'subscriptions.duration.annual': return 'Anual';
+			case 'subscriptions.duration.sixMonth': return 'Semestral';
+			case 'subscriptions.duration.threeMonth': return 'Trimestral';
+			case 'subscriptions.duration.twoMonth': return 'Cada 2 meses';
+			case 'subscriptions.duration.monthly': return 'Mensual';
+			case 'subscriptions.duration.weekly': return 'Semanalmente';
+			case 'subscriptions.periodunit.day': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('es'))(n,
+				one: 'Día',
+				other: 'Días',
 			);
-			case 'subscriptions.periodunit.week': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('fr'))(n,
-				one: 'Semaine',
-				other: 'Semaines',
+			case 'subscriptions.periodunit.week': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('es'))(n,
+				one: 'Semana',
+				other: 'Semanas',
 			);
-			case 'subscriptions.periodunit.month': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('fr'))(n,
-				one: 'Mois',
-				other: 'Mois',
+			case 'subscriptions.periodunit.month': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('es'))(n,
+				one: 'Mes',
+				other: 'Meses',
 			);
-			case 'subscriptions.periodunit.year': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('fr'))(n,
-				one: 'An',
-				other: 'Ans',
+			case 'subscriptions.periodunit.year': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('es'))(n,
+				one: 'Año',
+				other: 'Años',
+			);
+			default: return null;
+		}
+	}
+}
+
+extension on _StringsPt {
+	dynamic _flatMapFunction(String path) {
+		switch (path) {
+			case 'appName': return 'health_monitor_app_flutter';
+			case 'errors.email.empty': return 'Precisamos do seu endereço de e-mail';
+			case 'errors.email.invalid': return 'Parece que seu endereço de e-mail é inválido';
+			case 'errors.password.empty': return 'Precisamos de uma senha forte';
+			case 'errors.password.invalid': return 'Sua senha precisa conter pelo menos 6 caracteres';
+			case 'subscriptions.duration.lifetime': return 'Vitalício';
+			case 'subscriptions.duration.annual': return 'Anual';
+			case 'subscriptions.duration.sixMonth': return 'Semestral';
+			case 'subscriptions.duration.threeMonth': return 'Trimestral';
+			case 'subscriptions.duration.twoMonth': return 'A cada 2 meses';
+			case 'subscriptions.duration.monthly': return 'Mensual';
+			case 'subscriptions.duration.weekly': return 'Semanalmente';
+			case 'subscriptions.periodunit.day': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('pt'))(n,
+				one: 'Dia',
+				other: 'Dias',
+			);
+			case 'subscriptions.periodunit.week': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('pt'))(n,
+				one: 'Semana',
+				other: 'Semanas',
+			);
+			case 'subscriptions.periodunit.month': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('pt'))(n,
+				one: 'Mês',
+				other: 'Meses',
+			);
+			case 'subscriptions.periodunit.year': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('pt'))(n,
+				one: 'Ano',
+				other: 'Anos',
 			);
 			default: return null;
 		}

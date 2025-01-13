@@ -1,4 +1,4 @@
-import 'package:health_monitor_app_flutter/models/user.mode.dart';
+import 'package:health_monitor_app_flutter/models/user.model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'current_user.provider.g.dart';

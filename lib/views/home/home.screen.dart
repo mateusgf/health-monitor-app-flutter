@@ -1,6 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:health_monitor_app_flutter/models/daily_goal_data.model.dart';
+import 'package:health_monitor_app_flutter/repositories/daily_goal_data.repository.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -8,9 +11,13 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentSelectedDate = DateTime.now();
+    final dailyGoalDataRepository = DailyGoalDataRepository();
+    final dailyGoalData = dailyGoalDataRepository.getDailyGoalData();
+
+    print(dailyGoalData);
+
     var format = DateFormat.yMMMEd();
-    var dateString = format.format(currentSelectedDate);
+    var dateString = format.format(dailyGoalData.date);
 
     return Scaffold(
       appBar: AppBar(
@@ -36,35 +43,35 @@ class HomeScreen extends ConsumerWidget {
                   fontWeight: FontWeight.w700),
             ),
           ),
-          const Row(
+          Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(Icons.directions_run, color: Colors.blue),
               SizedBox(width: 8),
               Text(
-                'Daily steps',
-                style: TextStyle(fontSize: 18),
+                'Daily steps | ${dailyGoalData.steps}',
+                style: const TextStyle(fontSize: 18),
               ),
             ],
           ),
-          const Row(
+          Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(Icons.local_fire_department, color: Colors.orange),
               SizedBox(width: 8),
               Text(
-                'Calories',
+                'Calories | ${dailyGoalData.calories} kcal',
                 style: TextStyle(fontSize: 18),
               ),
             ],
           ),
-          const Row(
+          Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(Icons.navigation, color: Colors.green),
               SizedBox(width: 8),
               Text(
-                'Distance',
+                'Distance | ${dailyGoalData.distance} km',
                 style: TextStyle(fontSize: 18),
               ),
             ],
