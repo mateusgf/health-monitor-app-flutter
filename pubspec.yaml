@@ -48,7 +48,7 @@ dev_dependencies:
   freezed: ^2.4.7
   riverpod_generator: ^2.6.1
   build_runner: ^2.4.8
-  custom_lint: ^0.6.0
+  custom_lint: ^0.7.1
   riverpod_lint: ^2.3.9
   json_serializable: ^6.9.0
   slang_build_runner: ^3.29.0
