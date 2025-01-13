@@ -18,6 +18,24 @@ To start the project, do the instalation of iOS and Android SDK, open this repo 
 
 
 
+### Useful commands
+
+`flutter pub get`
+
+In a majority of those dependencies, code generation is used, so your best friend will be `dart run build_runner watch -d` which will run in background during all the dev phase of the project
+
+`dart run build_runner watch -d`
+`flutter pub run build_runner build --delete-conflicting-outputs`
+
+`flutter pub upgrade && flutter clean && flutter pub cache clean`
+
+`pod update PurchasesHybridCommon`
+
+### Recommended VSCode extensions
+
+1. https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
+2. https://marketplace.visualstudio.com/items?itemName=blaxou.freezed&ssr=false#overview
+3. https://marketplace.visualstudio.com/items?itemName=GaetSchwartz.build-runner
 
 #### Lib
 
