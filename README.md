@@ -47,9 +47,8 @@ In a majority of those dependencies, code generation is used, so your best frien
 
 And the folders
 
-- [**extensions**](./lib/extensions) contains extensions classes that are usefull. In flutter extensions are a very powerful system that makes it easy to add method to classes without breaking their contracts, so use them as much as you can
+- [**extensions**](./lib/extensions) contains extensions classes that are useful. In flutter extensions are a very powerful system that makes it easy to add method to classes without breaking their contracts, so use them as much as you can
 - [**gen**](./lib/gen/) contains generated translations from [Slang](https://pub.dev/packages/slang)
 - [**models**](./lib/models/) contains data classes, almost all of them are [Freezed](https://pub.dev/packages/freezed) classes (or enums)
 - [**providers**](./lib/providers/) contains app wide providers, like current user or theme data, all of them are [Riverpod](https://pub.dev/packages/riverpod) providers.
 - [**views**](./lib/views/) contains widgets and screens ! Folders are screens splited elements and widget are atomic elements that can be used anywhere in the app
-

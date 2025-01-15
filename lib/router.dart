@@ -4,6 +4,7 @@ import 'package:health_monitor_app_flutter/views/login/login.screen.dart';
 import 'package:health_monitor_app_flutter/views/onboarding/onboarding.screen.dart';
 import 'package:health_monitor_app_flutter/views/splash/splash.screen.dart';
 import 'package:health_monitor_app_flutter/views/subscriptions/subscriptions.screen.dart';
+import 'package:health_monitor_app_flutter/views/sleep_tracks/sleep_tracks.screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,6 +14,7 @@ enum AppRoute {
   login,
   home,
   subscriptions,
+  sleep_tracks,
 }
 
 /// Returns the path for the given route
@@ -24,12 +26,19 @@ String appRoutesPath(AppRoute route, {String? id}) => switch (route) {
       AppRoute.login => '/login',
       AppRoute.home => '/',
       AppRoute.subscriptions => '/subscriptions',
+      AppRoute.sleep_tracks => '/sleep_tracks',
     };
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: appRoutesPath(AppRoute.home),
     routes: [
+      GoRoute(
+        path: appRoutesPath(AppRoute.sleep_tracks),
+        pageBuilder: (context, state) => const MaterialPage(
+          child: SleepTracks(),
+        ),
+      ),
       GoRoute(
         path: appRoutesPath(AppRoute.splash),
         pageBuilder: (context, state) => const MaterialPage(
