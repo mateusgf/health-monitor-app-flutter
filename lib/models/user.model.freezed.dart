@@ -22,7 +22,11 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   String get id => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get height => throw _privateConstructorUsedError;
+  String get weight => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
+  List<UserGoal>? get userGoals => throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +42,14 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String id, String userName, String? email});
+  $Res call(
+      {String id,
+      String userName,
+      String name,
+      String height,
+      String weight,
+      String? email,
+      List<UserGoal>? userGoals});
 }
 
 /// @nodoc
@@ -58,7 +69,11 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? id = null,
     Object? userName = null,
+    Object? name = null,
+    Object? height = null,
+    Object? weight = null,
     Object? email = freezed,
+    Object? userGoals = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -69,10 +84,26 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as String,
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as String,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
+      userGoals: freezed == userGoals
+          ? _value.userGoals
+          : userGoals // ignore: cast_nullable_to_non_nullable
+              as List<UserGoal>?,
     ) as $Val);
   }
 }
@@ -84,7 +115,14 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String userName, String? email});
+  $Res call(
+      {String id,
+      String userName,
+      String name,
+      String height,
+      String weight,
+      String? email,
+      List<UserGoal>? userGoals});
 }
 
 /// @nodoc
@@ -101,7 +139,11 @@ class __$$UserImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? userName = null,
+    Object? name = null,
+    Object? height = null,
+    Object? weight = null,
     Object? email = freezed,
+    Object? userGoals = freezed,
   }) {
     return _then(_$UserImpl(
       id: null == id
@@ -112,10 +154,26 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as String,
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as String,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
+      userGoals: freezed == userGoals
+          ? _value._userGoals
+          : userGoals // ignore: cast_nullable_to_non_nullable
+              as List<UserGoal>?,
     ));
   }
 }
@@ -123,7 +181,15 @@ class __$$UserImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserImpl implements _User {
-  const _$UserImpl({required this.id, required this.userName, this.email});
+  const _$UserImpl(
+      {required this.id,
+      required this.userName,
+      required this.name,
+      required this.height,
+      required this.weight,
+      this.email,
+      final List<UserGoal>? userGoals})
+      : _userGoals = userGoals;
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -133,11 +199,26 @@ class _$UserImpl implements _User {
   @override
   final String userName;
   @override
+  final String name;
+  @override
+  final String height;
+  @override
+  final String weight;
+  @override
   final String? email;
+  final List<UserGoal>? _userGoals;
+  @override
+  List<UserGoal>? get userGoals {
+    final value = _userGoals;
+    if (value == null) return null;
+    if (_userGoals is EqualUnmodifiableListView) return _userGoals;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'User(id: $id, userName: $userName, email: $email)';
+    return 'User(id: $id, userName: $userName, name: $name, height: $height, weight: $weight, email: $email, userGoals: $userGoals)';
   }
 
   @override
@@ -148,12 +229,18 @@ class _$UserImpl implements _User {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.weight, weight) || other.weight == weight) &&
+            (identical(other.email, email) || other.email == email) &&
+            const DeepCollectionEquality()
+                .equals(other._userGoals, _userGoals));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userName, email);
+  int get hashCode => Object.hash(runtimeType, id, userName, name, height,
+      weight, email, const DeepCollectionEquality().hash(_userGoals));
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -175,7 +262,11 @@ abstract class _User implements User {
   const factory _User(
       {required final String id,
       required final String userName,
-      final String? email}) = _$UserImpl;
+      required final String name,
+      required final String height,
+      required final String weight,
+      final String? email,
+      final List<UserGoal>? userGoals}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -184,7 +275,15 @@ abstract class _User implements User {
   @override
   String get userName;
   @override
+  String get name;
+  @override
+  String get height;
+  @override
+  String get weight;
+  @override
   String? get email;
+  @override
+  List<UserGoal>? get userGoals;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
