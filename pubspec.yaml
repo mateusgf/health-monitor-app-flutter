@@ -35,11 +35,13 @@ dependencies:
   intl: ^0.19.0
   json_annotation: ^4.8.1
   logger: ^2.0.2+1
+  open_settings_plus: ^0.4.0
   path_provider: ^2.1.5
   riverpod_annotation: ^2.3.4
   shared_preferences: ^2.2.3
   slang: ^3.29.0
   slang_flutter: ^3.29.0
+  widgetbook: ^3.10.2
 
 dev_dependencies:
   flutter_test:

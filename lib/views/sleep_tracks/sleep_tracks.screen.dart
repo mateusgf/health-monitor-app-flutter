@@ -27,7 +27,8 @@ class SleepTracks extends ConsumerWidget {
             return ListTile(
               title: Text('Sleep Score: ${track.score}'),
               subtitle: Text(
-                  '${formatDate(track.start)}. Duration in minutes: (${track.durationInMinutes / 60}h)'),
+                '${formatDate(track.start)}. Duration in minutes: (${track.durationInMinutes / 60}h)',
+              ),
             );
           },
         ),

@@ -27,7 +27,7 @@ class SplashScreen extends ConsumerWidget {
     });
     return const Scaffold(
       body: Center(
-        child: Text('SplashScreen'),
+        child: Text('TODO: SplashScreen'),
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:health_monitor_app_flutter/repositories/daily_goal_data.repository.dart';
 import 'package:health_monitor_app_flutter/providers/repositories.provider.dart';
 import 'package:health_monitor_app_flutter/router.dart';
+import 'package:open_settings_plus/open_settings_plus.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -32,7 +33,16 @@ class HomeScreen extends ConsumerWidget {
       body: Column(
         children: [
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              if (OpenSettingsPlus.shared is OpenSettingsPlusAndroid) {
+                (OpenSettingsPlus.shared as OpenSettingsPlusAndroid)
+                    .bluetooth();
+              } else if (OpenSettingsPlus.shared is OpenSettingsPlusIOS) {
+                (OpenSettingsPlus.shared as OpenSettingsPlusIOS).bluetooth();
+              } else {
+                throw Exception('Platform not supported');
+              }
+            },
             icon: const Icon(Icons.bluetooth),
             label: const Text('Setup a new bluetooth device'),
             style: ElevatedButton.styleFrom(
