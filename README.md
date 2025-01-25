@@ -31,6 +31,14 @@ In a majority of those dependencies, code generation is used, so your best frien
 
 `pod update PurchasesHybridCommon`
 
+Widgetbook commands:
+
+`cd widgetbook && dart run build_runner build -d`
+
+To start widgetbook:
+
+`cd widgetbook && flutter run`
+
 ### Recommended VSCode extensions
 
 1. https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
