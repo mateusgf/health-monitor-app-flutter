@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:health_monitor_app_flutter/views/home/home.screen.dart';
 import 'package:health_monitor_app_flutter/views/login/login.screen.dart';
 import 'package:health_monitor_app_flutter/views/onboarding/onboarding.screen.dart';
+import 'package:health_monitor_app_flutter/views/sleep_tracking_detail/sleep_tracking_detail.screen.dart';
 import 'package:health_monitor_app_flutter/views/splash/splash.screen.dart';
 import 'package:health_monitor_app_flutter/views/subscriptions/subscriptions.screen.dart';
 import 'package:health_monitor_app_flutter/views/sleep_tracks/sleep_tracks.screen.dart';
@@ -15,6 +16,7 @@ enum AppRoute {
   home,
   subscriptions,
   sleep_tracks,
+  sleep_details,
 }
 
 /// Returns the path for the given route
@@ -27,6 +29,7 @@ String appRoutesPath(AppRoute route, {String? id}) => switch (route) {
       AppRoute.home => '/',
       AppRoute.subscriptions => '/subscriptions',
       AppRoute.sleep_tracks => '/sleep_tracks',
+      AppRoute.sleep_details => '/sleep_details/$id',
     };
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -38,6 +41,15 @@ final routerProvider = Provider<GoRouter>((ref) {
         pageBuilder: (context, state) => const MaterialPage(
           child: SleepTracks(),
         ),
+      ),
+      GoRoute(
+        path: appRoutesPath(AppRoute.sleep_details, id: ':id'),
+        pageBuilder: (context, state) {
+          final id = state.pathParameters['id'];
+          return MaterialPage(
+            child: SleepTrackingDetailScreen(id: id),
+          );
+        },
       ),
       GoRoute(
         path: appRoutesPath(AppRoute.splash),
