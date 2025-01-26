@@ -34,9 +34,9 @@ class MyApp extends ConsumerWidget {
     print('AppLocaleUtils.supportedLocales ${AppLocaleUtils.supportedLocales}');
 
     return MaterialApp.router(
-      // this is the main language of the phone itself and not the app. Even though the locale here in the app is hardcoded for debugging purposes, this value here still comes from the phone
+      // This is the main language of the phone itself and not the app (Even if locale is forced/hardcoded at startup).
       locale: TranslationProvider.of(context).flutterLocale,
-      // This comes from the languages to the phone itself and not the app
+      // This comes from the languages from the phone itself and not from the app
       supportedLocales: AppLocaleUtils.supportedLocales,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: ThemeData(useMaterial3: true),
