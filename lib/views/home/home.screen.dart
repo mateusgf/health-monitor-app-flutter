@@ -1,21 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:health_monitor_app_flutter/i18n/strings.g.dart';
 import 'package:health_monitor_app_flutter/repositories/daily_goal_data.repository.dart';
 import 'package:health_monitor_app_flutter/providers/repositories.provider.dart';
 import 'package:health_monitor_app_flutter/router.dart';
 import 'package:open_settings_plus/open_settings_plus.dart';
 import 'package:intl/intl.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   void goToSleepTrackDataRoute(WidgetRef ref) {
     ref.read(routerProvider).go(appRoutesPath(AppRoute.sleep_tracks));
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final sleepTracksAsync = ref.watch(sleepTracksProvider);
 
     final dailyGoalDataRepository = DailyGoalDataRepository();
@@ -26,12 +37,19 @@ class HomeScreen extends ConsumerWidget {
     var format = DateFormat.yMMMEd();
     var dateString = format.format(dailyGoalData.date);
 
+    Locale currentLocale = Localizations.localeOf(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Health Track for Wearables'),
+        title: Text(t.home.screen_title),
       ),
       body: Column(
         children: [
+          // @TODO: remove this
+          Center(
+            child: Text(
+                'Current Locale: ${currentLocale.languageCode}-${currentLocale.countryCode}'),
+          ),
           ElevatedButton.icon(
             onPressed: () {
               if (OpenSettingsPlus.shared is OpenSettingsPlusAndroid) {
@@ -40,11 +58,11 @@ class HomeScreen extends ConsumerWidget {
               } else if (OpenSettingsPlus.shared is OpenSettingsPlusIOS) {
                 (OpenSettingsPlus.shared as OpenSettingsPlusIOS).bluetooth();
               } else {
-                throw Exception('Platform not supported');
+                throw Exception(t.home.error_platform_not_supported);
               }
             },
             icon: const Icon(Icons.bluetooth),
-            label: const Text('Setup a new bluetooth device'),
+            label: Text(t.home.set_up_new_device),
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             ),
@@ -66,7 +84,7 @@ class HomeScreen extends ConsumerWidget {
               const Icon(Icons.directions_run, color: Colors.blue),
               const SizedBox(width: 8),
               Text(
-                'Daily steps | ${dailyGoalData.steps}',
+                '${t.home.daily_steps} | ${dailyGoalData.steps}',
                 style: const TextStyle(fontSize: 18),
               ),
             ],
@@ -77,7 +95,7 @@ class HomeScreen extends ConsumerWidget {
               const Icon(Icons.local_fire_department, color: Colors.orange),
               const SizedBox(width: 8),
               Text(
-                'Calories | ${dailyGoalData.calories} kcal',
+                '${t.home.calories} | ${dailyGoalData.calories} kcal',
                 style: const TextStyle(fontSize: 18),
               ),
             ],
@@ -88,7 +106,7 @@ class HomeScreen extends ConsumerWidget {
               const Icon(Icons.navigation, color: Colors.green),
               const SizedBox(width: 8),
               Text(
-                'Distance | ${dailyGoalData.distance} km',
+                '${t.home.distance} | ${dailyGoalData.distance} km',
                 style: const TextStyle(fontSize: 18),
               ),
             ],
@@ -144,7 +162,7 @@ class HomeScreen extends ConsumerWidget {
           ),
           ElevatedButton(
             onPressed: () => goToSleepTrackDataRoute(ref),
-            child: const Text('Sleep data'),
+            child: Text(t.home.sleep_data),
           ),
         ],
       ),

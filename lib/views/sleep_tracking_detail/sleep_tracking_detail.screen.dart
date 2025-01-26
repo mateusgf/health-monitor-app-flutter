@@ -10,9 +10,10 @@ import 'package:go_router/go_router.dart';
 import 'package:health_monitor_app_flutter/views/sleep_tracking_detail/widgets/sleep_stage_widget.dart';
 import 'package:intl/intl.dart';
 import 'package:chart_view/chart_view.dart';
+import 'package:health_monitor_app_flutter/i18n/strings.g.dart';
 
 class SleepTrackingDetailScreen extends ConsumerWidget {
-  const SleepTrackingDetailScreen({super.key});
+  const SleepTrackingDetailScreen({super.key, String? id});
 
   Widget drawSleep(List<Map<String, int>> sleepPhases, int sleepTime,
       int sleepStartTime, int sleepEndTime) {
@@ -99,13 +100,13 @@ class SleepTrackingDetailScreen extends ConsumerWidget {
     var getSleepLabel = (int phase) {
       switch (phase) {
         case AWAKE_INDEX:
-          return 'Awake';
+          return t.sleep.awake;
         case REM_INDEX:
-          return 'REM';
+          return t.sleep.rem;
         case LIGHT_SLEEP_INDEX:
-          return 'Light Sleep';
+          return t.sleep.light;
         case DEEP_SLEEP_INDEX:
-          return 'Deep Sleep';
+          return t.sleep.deep;
         default:
           return 'Unknown';
       }
@@ -151,7 +152,7 @@ class SleepTrackingDetailScreen extends ConsumerWidget {
         .toList();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Sleep Data Details')),
+      appBar: AppBar(title: Text(t.sleep.screen_title)),
       body: Column(
         children: [
           AspectRatio(

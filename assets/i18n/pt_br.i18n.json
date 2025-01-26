@@ -1,0 +1,24 @@
+{
+  "home": {
+    "screen_title": "Monitor de Saúde",
+    "sleep_data": "Dados de Sono",
+    "error_platform_not_supported": "Plataforma não suportada",
+    "set_up_new_device": "Configurar novo dispositivo bluetooth",
+    "daily_steps": "Passos Diários",
+    "calories": "Calorias",
+    "distance": "Distância"
+  },
+  "sleep_history": {
+    "screen_title": "Histórico de Sono",
+    "no_data": "Nenhum dado disponível",
+    "sleep_score": "Pontuação do Sono",
+    "duration_in_minutes": "Duração em minutos"
+  },
+  "sleep": {
+    "screen_title": "Detalhes do sono",
+    "light": "Sono Leve",
+    "awake": "Acordado",
+    "deep": "Sono profundo",
+    "rem": "REM"
+  }
+}

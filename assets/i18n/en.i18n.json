@@ -1,0 +1,24 @@
+{
+  "home": {
+    "screen_title": "Health Track for Wearables",
+    "sleep_data": "Sleep data",
+    "error_platform_not_supported": "Platform not supported",
+    "set_up_new_device": "Setup a new bluetooth device",
+    "daily_steps": "Daily Steps",
+    "calories": "Calories",
+    "distance": "Distance"
+  },
+  "sleep_history": {
+    "screen_title": "Sleep History",
+    "no_data": "No data available",
+    "sleep_score": "Sleep Score",
+    "duration_in_minutes": "Duration in minutes"
+  },
+  "sleep": {
+    "screen_title": "Sleep Data Details",
+    "light": "Light Sleep",
+    "awake": "Awake",
+    "deep": "Deep Sleep",
+    "rem": "REM"
+  }
+}

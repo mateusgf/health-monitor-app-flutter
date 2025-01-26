@@ -35,9 +35,13 @@ Widgetbook commands:
 
 `cd widgetbook && dart run build_runner build -d`
 
-To start widgetbook:
+To start Widgetbook:
 
 `cd widgetbook && flutter run`
+
+Generate translations strings:
+
+`dart run slang`
 
 ### Recommended VSCode extensions
 

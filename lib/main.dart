@@ -19,6 +19,9 @@ void main() {
     ),
   );
 
+  // @TODO: remove hardcoded/forced locale
+  LocaleSettings.setLocaleRaw('br');
+
   runApp(app);
 }
 
@@ -27,8 +30,13 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print('flutterLocale ${TranslationProvider.of(context).flutterLocale}');
+    print('AppLocaleUtils.supportedLocales ${AppLocaleUtils.supportedLocales}');
+
     return MaterialApp.router(
+      // this is the main language of the phone itself and not the app. Even though the locale here in the app is hardcoded for debugging purposes, this value here still comes from the phone
       locale: TranslationProvider.of(context).flutterLocale,
+      // This comes from the languages to the phone itself and not the app
       supportedLocales: AppLocaleUtils.supportedLocales,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: ThemeData(useMaterial3: true),

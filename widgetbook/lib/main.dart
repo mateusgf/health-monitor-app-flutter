@@ -16,8 +16,21 @@ class WidgetbookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('DefaultWidgetsLocalizations: $DefaultWidgetsLocalizations');
+    print('DefaultMaterialLocalizations: $DefaultMaterialLocalizations');
+
     return Widgetbook.material(
       directories: directories,
+      addons: [
+        LocalizationAddon(locales: [
+          const Locale('en', 'US'),
+          const Locale('pt', 'BR'),
+        ], localizationsDelegates: [
+          DefaultWidgetsLocalizations.delegate,
+          DefaultMaterialLocalizations.delegate,
+        ], initialLocale: const Locale('en', 'US')),
+        GridAddon(),
+      ],
     );
   }
 }

@@ -24,7 +24,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'SleepTrackingDetailScreen',
             useCase: _i1.WidgetbookUseCase(
               name: 'Default',
-              builder: _i2.buildCoolButtonUseCase,
+              builder: _i2.buildSleepTrackingDetailScreenUseCase,
             ),
           )
         ],
@@ -36,7 +36,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'SplashScreen',
             useCase: _i1.WidgetbookUseCase(
               name: 'Default',
-              builder: _i3.buildCoolButtonUseCase,
+              builder: _i3.buildSplashScreenUseCase,
             ),
           )
         ],
