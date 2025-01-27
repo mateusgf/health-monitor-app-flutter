@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_monitor_app_flutter/i18n/strings.g.dart';
+import 'package:health_monitor_app_flutter/gen/strings.g.dart';
 import 'package:health_monitor_app_flutter/providers/repositories.provider.dart';
 import 'package:health_monitor_app_flutter/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

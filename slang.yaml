@@ -1,2 +1,4 @@
 input_directory: assets/i18n
-output_directory: lib/i18n
+locales:
+  - en
+  - br

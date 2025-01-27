@@ -4,8 +4,10 @@ import 'package:health_monitor_app_flutter/logger.dart';
 import 'package:health_monitor_app_flutter/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future main() async {
   logger.i('Starting main...');
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,8 +21,10 @@ void main() {
     ),
   );
 
-  // @TODO: remove hardcoded/forced locale
-  LocaleSettings.setLocaleRaw('br');
+  // @TODO remove hardcoded locale
+  LocaleSettings.setLocaleRaw('pt');
+
+  await dotenv.load(fileName: ".env.dev");
 
   runApp(app);
 }
@@ -36,9 +40,22 @@ class MyApp extends ConsumerWidget {
     return MaterialApp.router(
       // This is the main language of the phone itself and not the app (Even if locale is forced/hardcoded at startup).
       locale: TranslationProvider.of(context).flutterLocale,
-      // This comes from the languages from the phone itself and not from the app
-      supportedLocales: AppLocaleUtils.supportedLocales,
-      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+
+      // @TODO: remove hardcoded locale and let the app use the phone's locale
+      // locale: Locale('pt'),
+
+      // AppLocaleUtils.supportedLocales comes from the languages from the phone itself and not from the app.
+      // So it's better to use the supportedLocales from the app itself.
+      // supportedLocales: AppLocaleUtils.supportedLocales,
+      supportedLocales: [
+        Locale('en'),
+        Locale('pt'),
+      ],
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       theme: ThemeData(useMaterial3: true),
       routerConfig: ref.read(routerProvider),
     );
