@@ -1,43 +1,92 @@
 /// Generated file. Do not edit.
 ///
-/// Original: assets/i18n
+/// Source: assets/i18n
 /// To regenerate, run: `dart run slang`
 ///
-/// Locales: 3
-/// Strings: 9 (3 per locale)
+/// Locales: 2
+/// Strings: 32 (16 per locale)
 ///
-/// Built on 2025-01-25 at 19:36 UTC
+/// Built on 2025-01-27 at 16:41 UTC
 
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
 import 'package:flutter/widgets.dart';
-import 'package:slang/builder/model/node.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
 import 'package:slang_flutter/slang_flutter.dart';
 export 'package:slang_flutter/slang_flutter.dart';
 
-const AppLocale _baseLocale = AppLocale.en;
+import 'strings_pt.g.dart' deferred as l_pt;
+part 'strings_en.g.dart';
 
-/// Supported locales, see extension methods below.
+/// Supported locales.
 ///
 /// Usage:
 /// - LocaleSettings.setLocale(AppLocale.en) // set locale
 /// - Locale locale = AppLocale.en.flutterLocale // get flutter locale from enum
 /// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
-	en(languageCode: 'en', build: Translations.build),
-	br(languageCode: 'br', build: _StringsBr.build),
-	fr(languageCode: 'fr', build: _StringsFr.build);
+	en(languageCode: 'en'),
+	pt(languageCode: 'pt');
 
-	const AppLocale({required this.languageCode, this.scriptCode, this.countryCode, required this.build}); // ignore: unused_element
+	const AppLocale({
+		required this.languageCode,
+		this.scriptCode, // ignore: unused_element
+		this.countryCode, // ignore: unused_element
+	});
 
 	@override final String languageCode;
 	@override final String? scriptCode;
 	@override final String? countryCode;
-	@override final TranslationBuilder<AppLocale, Translations> build;
+
+	@override
+	Future<Translations> build({
+		Map<String, Node>? overrides,
+		PluralResolver? cardinalResolver,
+		PluralResolver? ordinalResolver,
+	}) async {
+		switch (this) {
+			case AppLocale.en:
+				return TranslationsEn(
+					overrides: overrides,
+					cardinalResolver: cardinalResolver,
+					ordinalResolver: ordinalResolver,
+				);
+			case AppLocale.pt:
+				await l_pt.loadLibrary();
+				return l_pt.TranslationsPt(
+					overrides: overrides,
+					cardinalResolver: cardinalResolver,
+					ordinalResolver: ordinalResolver,
+				);
+		}
+	}
+
+	@override
+	Translations buildSync({
+		Map<String, Node>? overrides,
+		PluralResolver? cardinalResolver,
+		PluralResolver? ordinalResolver,
+	}) {
+		switch (this) {
+			case AppLocale.en:
+				return TranslationsEn(
+					overrides: overrides,
+					cardinalResolver: cardinalResolver,
+					ordinalResolver: ordinalResolver,
+				);
+			case AppLocale.pt:
+				return l_pt.TranslationsPt(
+					overrides: overrides,
+					cardinalResolver: cardinalResolver,
+					ordinalResolver: ordinalResolver,
+				);
+		}
+	}
 
 	/// Gets current instance managed by [LocaleSettings].
-	Translations get translations => LocaleSettings.instance.translationMap[this]!;
+	Translations get translations => LocaleSettings.instance.getTranslations(this);
 }
 
 /// Method A: Simple
@@ -83,19 +132,31 @@ extension BuildContextTranslationsExtension on BuildContext {
 
 /// Manages all translation instances and the current locale
 class LocaleSettings extends BaseFlutterLocaleSettings<AppLocale, Translations> {
-	LocaleSettings._() : super(utils: AppLocaleUtils.instance);
+	LocaleSettings._() : super(
+		utils: AppLocaleUtils.instance,
+		lazy: true,
+	);
 
 	static final instance = LocaleSettings._();
 
 	// static aliases (checkout base methods for documentation)
 	static AppLocale get currentLocale => instance.currentLocale;
 	static Stream<AppLocale> getLocaleStream() => instance.getLocaleStream();
-	static AppLocale setLocale(AppLocale locale, {bool? listenToDeviceLocale = false}) => instance.setLocale(locale, listenToDeviceLocale: listenToDeviceLocale);
-	static AppLocale setLocaleRaw(String rawLocale, {bool? listenToDeviceLocale = false}) => instance.setLocaleRaw(rawLocale, listenToDeviceLocale: listenToDeviceLocale);
-	static AppLocale useDeviceLocale() => instance.useDeviceLocale();
-	@Deprecated('Use [AppLocaleUtils.supportedLocales]') static List<Locale> get supportedLocales => instance.supportedLocales;
-	@Deprecated('Use [AppLocaleUtils.supportedLocalesRaw]') static List<String> get supportedLocalesRaw => instance.supportedLocalesRaw;
-	static void setPluralResolver({String? language, AppLocale? locale, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver}) => instance.setPluralResolver(
+	static Future<AppLocale> setLocale(AppLocale locale, {bool? listenToDeviceLocale = false}) => instance.setLocale(locale, listenToDeviceLocale: listenToDeviceLocale);
+	static Future<AppLocale> setLocaleRaw(String rawLocale, {bool? listenToDeviceLocale = false}) => instance.setLocaleRaw(rawLocale, listenToDeviceLocale: listenToDeviceLocale);
+	static Future<AppLocale> useDeviceLocale() => instance.useDeviceLocale();
+	static Future<void> setPluralResolver({String? language, AppLocale? locale, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver}) => instance.setPluralResolver(
+		language: language,
+		locale: locale,
+		cardinalResolver: cardinalResolver,
+		ordinalResolver: ordinalResolver,
+	);
+
+	// synchronous versions
+	static AppLocale setLocaleSync(AppLocale locale, {bool? listenToDeviceLocale = false}) => instance.setLocaleSync(locale, listenToDeviceLocale: listenToDeviceLocale);
+	static AppLocale setLocaleRawSync(String rawLocale, {bool? listenToDeviceLocale = false}) => instance.setLocaleRawSync(rawLocale, listenToDeviceLocale: listenToDeviceLocale);
+	static AppLocale useDeviceLocaleSync() => instance.useDeviceLocaleSync();
+	static void setPluralResolverSync({String? language, AppLocale? locale, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver}) => instance.setPluralResolverSync(
 		language: language,
 		locale: locale,
 		cardinalResolver: cardinalResolver,
@@ -105,7 +166,10 @@ class LocaleSettings extends BaseFlutterLocaleSettings<AppLocale, Translations> 
 
 /// Provides utility functions without any side effects.
 class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, Translations> {
-	AppLocaleUtils._() : super(baseLocale: _baseLocale, locales: AppLocale.values);
+	AppLocaleUtils._() : super(
+		baseLocale: AppLocale.en,
+		locales: AppLocale.values,
+	);
 
 	static final instance = AppLocaleUtils._();
 
@@ -115,195 +179,4 @@ class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, Translations> {
 	static AppLocale findDeviceLocale() => instance.findDeviceLocale();
 	static List<Locale> get supportedLocales => instance.supportedLocales;
 	static List<String> get supportedLocalesRaw => instance.supportedLocalesRaw;
-}
-
-// translations
-
-// Path: <root>
-class Translations implements BaseTranslations<AppLocale, Translations> {
-	/// Returns the current translations of the given [context].
-	///
-	/// Usage:
-	/// final t = Translations.of(context);
-	static Translations of(BuildContext context) => InheritedLocaleData.of<AppLocale, Translations>(context).translations;
-
-	/// You can call this constructor and build your own translation instance of this locale.
-	/// Constructing via the enum [AppLocale.build] is preferred.
-	Translations.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
-		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
-		    locale: AppLocale.en,
-		    overrides: overrides ?? {},
-		    cardinalResolver: cardinalResolver,
-		    ordinalResolver: ordinalResolver,
-		  ) {
-		$meta.setFlatMapFunction(_flatMapFunction);
-	}
-
-	/// Metadata for the translations of <en>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
-
-	/// Access flat map
-	dynamic operator[](String key) => $meta.getTranslation(key);
-
-	late final Translations _root = this; // ignore: unused_field
-
-	// Translations
-	late final _StringsHomeEn home = _StringsHomeEn._(_root);
-	late final _StringsSleepEn sleep = _StringsSleepEn._(_root);
-}
-
-// Path: home
-class _StringsHomeEn {
-	_StringsHomeEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get sleep_data => 'Sleep data';
-}
-
-// Path: sleep
-class _StringsSleepEn {
-	_StringsSleepEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get light => 'Light Sleep';
-	String get awake => 'Awake';
-}
-
-// Path: <root>
-class _StringsBr implements Translations {
-	/// You can call this constructor and build your own translation instance of this locale.
-	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsBr.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
-		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
-		    locale: AppLocale.br,
-		    overrides: overrides ?? {},
-		    cardinalResolver: cardinalResolver,
-		    ordinalResolver: ordinalResolver,
-		  ) {
-		$meta.setFlatMapFunction(_flatMapFunction);
-	}
-
-	/// Metadata for the translations of <br>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
-
-	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
-
-	@override late final _StringsBr _root = this; // ignore: unused_field
-
-	// Translations
-	@override late final _StringsHomeBr home = _StringsHomeBr._(_root);
-	@override late final _StringsSleepBr sleep = _StringsSleepBr._(_root);
-}
-
-// Path: home
-class _StringsHomeBr implements _StringsHomeEn {
-	_StringsHomeBr._(this._root);
-
-	@override final _StringsBr _root; // ignore: unused_field
-
-	// Translations
-	@override String get sleep_data => 'Dados de Sono';
-}
-
-// Path: sleep
-class _StringsSleepBr implements _StringsSleepEn {
-	_StringsSleepBr._(this._root);
-
-	@override final _StringsBr _root; // ignore: unused_field
-
-	// Translations
-	@override String get light => 'Sono Leve';
-	@override String get awake => 'Acordado';
-}
-
-// Path: <root>
-class _StringsFr implements Translations {
-	/// You can call this constructor and build your own translation instance of this locale.
-	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsFr.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
-		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
-		    locale: AppLocale.fr,
-		    overrides: overrides ?? {},
-		    cardinalResolver: cardinalResolver,
-		    ordinalResolver: ordinalResolver,
-		  ) {
-		$meta.setFlatMapFunction(_flatMapFunction);
-	}
-
-	/// Metadata for the translations of <fr>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
-
-	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
-
-	@override late final _StringsFr _root = this; // ignore: unused_field
-
-	// Translations
-	@override late final _StringsHomeFr home = _StringsHomeFr._(_root);
-	@override late final _StringsSleepFr sleep = _StringsSleepFr._(_root);
-}
-
-// Path: home
-class _StringsHomeFr implements _StringsHomeEn {
-	_StringsHomeFr._(this._root);
-
-	@override final _StringsFr _root; // ignore: unused_field
-
-	// Translations
-	@override String get sleep_data => 'Dados de Sono-FR';
-}
-
-// Path: sleep
-class _StringsSleepFr implements _StringsSleepEn {
-	_StringsSleepFr._(this._root);
-
-	@override final _StringsFr _root; // ignore: unused_field
-
-	// Translations
-	@override String get light => 'Sono Leve-FR';
-	@override String get awake => 'Acordado-FR';
-}
-
-/// Flat map(s) containing all translations.
-/// Only for edge cases! For simple maps, use the map function of this library.
-
-extension on Translations {
-	dynamic _flatMapFunction(String path) {
-		switch (path) {
-			case 'home.sleep_data': return 'Sleep data';
-			case 'sleep.light': return 'Light Sleep';
-			case 'sleep.awake': return 'Awake';
-			default: return null;
-		}
-	}
-}
-
-extension on _StringsBr {
-	dynamic _flatMapFunction(String path) {
-		switch (path) {
-			case 'home.sleep_data': return 'Dados de Sono';
-			case 'sleep.light': return 'Sono Leve';
-			case 'sleep.awake': return 'Acordado';
-			default: return null;
-		}
-	}
-}
-
-extension on _StringsFr {
-	dynamic _flatMapFunction(String path) {
-		switch (path) {
-			case 'home.sleep_data': return 'Dados de Sono-FR';
-			case 'sleep.light': return 'Sono Leve-FR';
-			case 'sleep.awake': return 'Acordado-FR';
-			default: return null;
-		}
-	}
 }

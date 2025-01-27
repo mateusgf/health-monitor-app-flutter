@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
@@ -23,12 +24,13 @@ class WidgetbookApp extends StatelessWidget {
       directories: directories,
       addons: [
         LocalizationAddon(locales: [
-          const Locale('en', 'US'),
-          const Locale('pt', 'BR'),
+          const Locale('en'),
+          const Locale('pt'),
         ], localizationsDelegates: [
           DefaultWidgetsLocalizations.delegate,
           DefaultMaterialLocalizations.delegate,
-        ], initialLocale: const Locale('en', 'US')),
+          DefaultCupertinoLocalizations.delegate,
+        ], initialLocale: const Locale('en')),
         GridAddon(),
       ],
     );

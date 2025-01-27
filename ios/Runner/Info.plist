@@ -17,7 +17,7 @@
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>en</string>
-		<string>pt-BR</string>
+		<string>pt</string>
 	</array>
 	<key>CFBundleName</key>
 	<string>flutter_bootstrap_app</string>

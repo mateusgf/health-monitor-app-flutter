@@ -7,7 +7,8 @@ UI built using Flutter.
 ### Dependencies
 To start the project, do the instalation of iOS and Android SDK, open this repo code in VS Code then install Flutter extensions for VS code and start the project by pressing F5 (Or from the Run > Start Debugging menu).
 
-### Dependencies
+Copy the .env variable
+`cp .env.dev .env`
 
 - **State Management** by [Riverpod](https://pub.dev/packages/riverpod)
 - **Data classes** by [Freezed](https://pub.dev/packages/freezed)
@@ -15,8 +16,7 @@ To start the project, do the instalation of iOS and Android SDK, open this repo 
 - **Translations** by [Slang](https://pub.dev/packages/slang)
 - **Network by** [Dio](https://pub.dev/packages/dio)
 - **Logging by** [Logger](https://pub.dev/packages/logger)
-
-
+- **ENV variables by** [flutter_dotenv](https://pub.dev/packages/flutter_dotenv)
 
 ### Useful commands
 
@@ -42,6 +42,10 @@ To start Widgetbook:
 Generate translations strings:
 
 `dart run slang`
+
+### Starting the backend
+
+`cd backend && go run main.go`
 
 ### Recommended VSCode extensions
 

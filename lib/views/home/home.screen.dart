@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:health_monitor_app_flutter/i18n/strings.g.dart';
+import 'package:health_monitor_app_flutter/gen/strings.g.dart';
 import 'package:health_monitor_app_flutter/repositories/daily_goal_data.repository.dart';
 import 'package:health_monitor_app_flutter/providers/repositories.provider.dart';
 import 'package:health_monitor_app_flutter/router.dart';
@@ -21,7 +21,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     super.initState();
   }
 
-  void goToSleepTrackDataRoute(WidgetRef ref) {
+  void goToSleepHistoryRoute(WidgetRef ref) {
     ref.read(routerProvider).go(appRoutesPath(AppRoute.sleep_tracks));
   }
 
@@ -161,7 +161,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
           ElevatedButton(
-            onPressed: () => goToSleepTrackDataRoute(ref),
+            onPressed: () => goToSleepHistoryRoute(ref),
             child: Text(t.home.sleep_data),
           ),
         ],

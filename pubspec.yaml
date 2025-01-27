@@ -28,6 +28,7 @@ dependencies:
   fl_chart: ^0.70.2
   flutter:
     sdk: flutter
+  flutter_dotenv: ^5.2.1
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^2.6.1
@@ -61,3 +62,4 @@ flutter:
   assets:
     - assets/
     - assets/i18n/
+    - ./.env.dev
