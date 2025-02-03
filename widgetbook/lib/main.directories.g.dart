@@ -10,13 +10,26 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:widgetbook/widgetbook.dart' as _i1;
-import 'package:widgetbook_workspace/sleep_tracking_detail_screen.dart' as _i2;
-import 'package:widgetbook_workspace/splash_screen.dart' as _i3;
+import 'package:widgetbook_workspace/login_screen.dart' as _i2;
+import 'package:widgetbook_workspace/sleep_tracking_detail_screen.dart' as _i3;
+import 'package:widgetbook_workspace/splash_screen.dart' as _i4;
 
 final directories = <_i1.WidgetbookNode>[
   _i1.WidgetbookFolder(
     name: 'views',
     children: [
+      _i1.WidgetbookFolder(
+        name: 'login',
+        children: [
+          _i1.WidgetbookLeafComponent(
+            name: 'LoginScreen',
+            useCase: _i1.WidgetbookUseCase(
+              name: 'Default',
+              builder: _i2.buildLoginScreenUseCase,
+            ),
+          )
+        ],
+      ),
       _i1.WidgetbookFolder(
         name: 'sleep_tracking_detail',
         children: [
@@ -24,7 +37,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'SleepTrackingDetailScreen',
             useCase: _i1.WidgetbookUseCase(
               name: 'Default',
-              builder: _i2.buildSleepTrackingDetailScreenUseCase,
+              builder: _i3.buildSleepTrackingDetailScreenUseCase,
             ),
           )
         ],
@@ -36,7 +49,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'SplashScreen',
             useCase: _i1.WidgetbookUseCase(
               name: 'Default',
-              builder: _i3.buildSplashScreenUseCase,
+              builder: _i4.buildSplashScreenUseCase,
             ),
           )
         ],

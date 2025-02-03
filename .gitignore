@@ -47,3 +47,7 @@ app.*.map.json
 .env.dev
 .env.prod
 .DS_Store
+firebase.json
+GoogleService-Info.plist
+google-services.json
+firebase_options.dart
