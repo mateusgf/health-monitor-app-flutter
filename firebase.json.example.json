@@ -1,0 +1,30 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "???? generate by firabase cli. This whole json file was generate by firebase cli configuration command",
+          "appId": "???? generate by firabase cli",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "???? generate by firabase cli",
+          "appId": "???? generate by firabase cli",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "???? generate by firabase cli",
+          "configurations": {
+            "android": "???? generate by firabase cli",
+            "ios": "???? generate by firabase cli?"
+          }
+        }
+      }
+    }
+  }
+}

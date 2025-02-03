@@ -34,7 +34,8 @@ String appRoutesPath(AppRoute route, {String? id}) => switch (route) {
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: appRoutesPath(AppRoute.home),
+    // initialLocation: appRoutesPath(AppRoute.home),
+    initialLocation: appRoutesPath(AppRoute.login),
     routes: [
       GoRoute(
         path: appRoutesPath(AppRoute.sleep_tracks),
@@ -65,7 +66,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: appRoutesPath(AppRoute.login),
-        pageBuilder: (context, state) => const MaterialPage(
+        pageBuilder: (context, state) => MaterialPage(
           child: LoginScreen(),
         ),
       ),

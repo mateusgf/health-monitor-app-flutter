@@ -25,6 +25,7 @@ dependencies:
   chart_view: ^0.0.2
   collection: ^1.18.0
   dio: ^5.7.0
+  firebase_core: ^3.10.1
   fl_chart: ^0.70.2
   flutter:
     sdk: flutter
@@ -62,4 +63,5 @@ flutter:
   assets:
     - assets/
     - assets/i18n/
+    - assets/images/
     - ./.env.dev
