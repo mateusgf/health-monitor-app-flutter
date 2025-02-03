@@ -40,7 +40,7 @@ dependencies:
   open_settings_plus: ^0.4.0
   path_provider: ^2.1.5
   riverpod_annotation: ^2.3.4
-  shared_preferences: ^2.4.0
+  shared_preferences: ^2.5.1
   slang: ^4.4.1
   slang_flutter: ^4.4.0
   widgetbook: ^3.10.2
