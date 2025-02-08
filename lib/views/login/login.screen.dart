@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_monitor_app_flutter/views/components/health_button.dart';
 import 'package:health_monitor_app_flutter/views/components/health_textfield.dart';
@@ -8,11 +9,26 @@ class LoginScreen extends ConsumerWidget {
   LoginScreen({super.key});
 
   // text editing controllers
-  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   // sign user in method
-  void signUserIn() {}
+  void signUserIn() async {
+    print('what');
+    print(emailController.text);
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailController.text,
+      password: passwordController.text,
+    );
+
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        print('User is signed in!');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,11 +51,13 @@ class LoginScreen extends ConsumerWidget {
 
               const SizedBox(height: 25),
 
-              // username textfield
+              // E-mail textfield
               HealthTextfield(
-                controller: usernameController,
-                hintText: 'Username',
+                controller: emailController,
+                hintText: 'E-mail',
                 obscureText: false,
+                // @TODO: remove
+                initialValue: 'test@email.com',
               ),
 
               const SizedBox(height: 10),
@@ -49,6 +67,8 @@ class LoginScreen extends ConsumerWidget {
                 controller: passwordController,
                 hintText: 'Password',
                 obscureText: true,
+                // @TODO: remove
+                initialValue: 'test123',
               ),
 
               const SizedBox(height: 10),

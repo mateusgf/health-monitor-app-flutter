@@ -4,16 +4,20 @@ class HealthTextfield extends StatelessWidget {
   final controller;
   final String hintText;
   final bool obscureText;
+  final String initialValue;
 
   const HealthTextfield({
     super.key,
     required this.controller,
     required this.hintText,
     required this.obscureText,
+    this.initialValue = '',
   });
 
   @override
   Widget build(BuildContext context) {
+    controller.text = this.initialValue;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextField(

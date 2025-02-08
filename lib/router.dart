@@ -6,10 +6,12 @@ import 'package:health_monitor_app_flutter/views/sleep_tracking_detail/sleep_tra
 import 'package:health_monitor_app_flutter/views/splash/splash.screen.dart';
 import 'package:health_monitor_app_flutter/views/subscriptions/subscriptions.screen.dart';
 import 'package:health_monitor_app_flutter/views/sleep_tracks/sleep_tracks.screen.dart';
+import 'package:health_monitor_app_flutter/views/auth/auth.page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 enum AppRoute {
+  auth,
   splash,
   onboarding,
   login,
@@ -23,6 +25,7 @@ enum AppRoute {
 /// Uses [route] The route to get the path for and an optional [id]
 /// if needed
 String appRoutesPath(AppRoute route, {String? id}) => switch (route) {
+      AppRoute.auth => '/auth',
       AppRoute.splash => '/splash',
       AppRoute.onboarding => '/onboarding',
       AppRoute.login => '/login',
@@ -35,7 +38,8 @@ String appRoutesPath(AppRoute route, {String? id}) => switch (route) {
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     // initialLocation: appRoutesPath(AppRoute.home),
-    initialLocation: appRoutesPath(AppRoute.login),
+    // initialLocation: appRoutesPath(AppRoute.login),
+    initialLocation: appRoutesPath(AppRoute.auth),
     routes: [
       GoRoute(
         path: appRoutesPath(AppRoute.sleep_tracks),
@@ -80,6 +84,12 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: appRoutesPath(AppRoute.subscriptions),
         pageBuilder: (context, state) => const MaterialPage(
           child: SubscriptionsScreen(),
+        ),
+      ),
+      GoRoute(
+        path: appRoutesPath(AppRoute.auth),
+        pageBuilder: (context, state) => const MaterialPage(
+          child: AuthPage(),
         ),
       ),
     ],
