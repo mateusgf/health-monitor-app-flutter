@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -39,9 +40,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     Locale currentLocale = Localizations.localeOf(context);
 
+    void logout() {
+      FirebaseAuth.instance.signOut();
+    }
+
+    void syncDataWithDevice() {
+      print('Sync data with wearable device using bluetooth');
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(t.home.screen_title),
+        actions: [
+          IconButton(
+            onPressed: logout,
+            icon: Icon(Icons.logout),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -171,9 +186,5 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         onPressed: syncDataWithDevice,
       ),
     );
-  }
-
-  void syncDataWithDevice() {
-    print('Sync data with wearable device using bluetooth');
   }
 }

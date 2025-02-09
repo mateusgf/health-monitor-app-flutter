@@ -17,6 +17,9 @@ Copy the .env variable
 - **Network by** [Dio](https://pub.dev/packages/dio)
 - **Logging by** [Logger](https://pub.dev/packages/logger)
 - **ENV variables by** [flutter_dotenv](https://pub.dev/packages/flutter_dotenv)
+- **Widgetbook/storybook by** [widgetbook](https://pub.dev/packages/widgetbook)
+- **Charts by** [fl_chart](https://pub.dev/packages/fl_chart)
+- **Authentication by** [firebase_auth](https://pub.dev/packages/firebase_auth)
 
 ### Useful commands
 
