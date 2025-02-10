@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class HealthButton extends StatelessWidget {
   final Function()? onTap;
 
-  const HealthButton({super.key, required this.onTap});
+  final Text child;
+
+  const HealthButton({super.key, required this.onTap, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +18,8 @@ class HealthButton extends StatelessWidget {
           color: Color(0xFFCCAFA5),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Center(
-          child: Text(
-            "Sign In",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
-          ),
+        child: Center(
+          child: child,
         ),
       ),
     );

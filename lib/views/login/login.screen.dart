@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:health_monitor_app_flutter/router.dart';
 import 'package:health_monitor_app_flutter/views/components/health_button.dart';
 import 'package:health_monitor_app_flutter/views/components/health_textfield.dart';
 import 'package:health_monitor_app_flutter/views/components/square_tile.dart';
@@ -18,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool isLoading = false;
 
-  void signUserIn() async {
+  void signUserIn(WidgetRef ref) async {
     setState(() {
       isLoading = true;
     });
@@ -42,6 +43,8 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         isLoading = false;
       });
+
+      ref.read(routerProvider).go(appRoutesPath(AppRoute.home));
     } on FirebaseAuthException catch (e) {
       print('Error: $e');
 
@@ -75,6 +78,10 @@ class _LoginScreenState extends State<LoginScreen> {
         });
   }
 
+  void goToRegisterScreen(WidgetRef ref) {
+    ref.read(routerProvider).go(appRoutesPath(AppRoute.register));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,114 +89,126 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: Consumer(
           builder: (context, ref, child) {
-            // You can still use Riverpod providers here if needed
+            // Riverpod providers are still usable here
             return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 50),
-                  // Logo
-                  const Icon(
-                    Icons.lock,
-                    size: 100,
-                  ),
-                  const SizedBox(height: 50),
-                  const SizedBox(height: 25),
-                  // E-mail textfield
-                  HealthTextfield(
-                    controller: emailController,
-                    hintText: 'E-mail',
-                    obscureText: false,
-                    // @TODO: remove
-                    initialValue: 'test@email.com',
-                  ),
-                  const SizedBox(height: 10),
-                  // Password textfield
-                  HealthTextfield(
-                    controller: passwordController,
-                    hintText: 'Password',
-                    obscureText: true,
-                    // @TODO: remove
-                    initialValue: 'test123',
-                  ),
-                  const SizedBox(height: 10),
-                  // Forgot password?
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 50),
+                    // Logo
+                    const Icon(
+                      Icons.lock,
+                      size: 100,
+                    ),
+                    const SizedBox(height: 50),
+                    const SizedBox(height: 25),
+                    // E-mail textfield
+                    HealthTextfield(
+                      controller: emailController,
+                      hintText: 'E-mail',
+                      obscureText: false,
+                      // @TODO: remove
+                      initialValue: 'test@email.com',
+                    ),
+                    const SizedBox(height: 10),
+                    // Password textfield
+                    HealthTextfield(
+                      controller: passwordController,
+                      hintText: 'Password',
+                      obscureText: true,
+                      // @TODO: remove
+                      initialValue: 'test123',
+                    ),
+                    const SizedBox(height: 10),
+                    // Forgot password?
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            'Forgot Password?',
+                            style: TextStyle(color: Colors.grey[600]),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 25),
+                    // Sign in button
+                    HealthButton(
+                      onTap: () => signUserIn(ref),
+                      child: Text("Sign In",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          )),
+                    ),
+                    const SizedBox(height: 50),
+                    // Or continue with
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Divider(
+                              thickness: 0.5,
+                              color: Colors.grey[400],
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Text(
+                              'Or continue with',
+                              style: TextStyle(color: Colors.grey[700]),
+                            ),
+                          ),
+                          Expanded(
+                            child: Divider(
+                              thickness: 0.5,
+                              color: Colors.grey[400],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 50),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        // Google button
+                        SquareTile(imagePath: 'assets/images/google.png'),
+                        SizedBox(width: 25),
+                        // Apple button
+                        SquareTile(imagePath: 'assets/images/apple.png')
+                      ],
+                    ),
+                    const SizedBox(height: 50),
+                    // Create account
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Forgot Password?',
-                          style: TextStyle(color: Colors.grey[600]),
+                          'Not a member?',
+                          style: TextStyle(color: Colors.grey[700]),
                         ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 25),
-                  // Sign in button
-                  HealthButton(
-                    onTap: signUserIn,
-                  ),
-                  const SizedBox(height: 50),
-                  // Or continue with
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Divider(
-                            thickness: 0.5,
-                            color: Colors.grey[400],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Text(
-                            'Or continue with',
-                            style: TextStyle(color: Colors.grey[700]),
-                          ),
-                        ),
-                        Expanded(
-                          child: Divider(
-                            thickness: 0.5,
-                            color: Colors.grey[400],
+                        const SizedBox(width: 4),
+                        GestureDetector(
+                          onTap: () => goToRegisterScreen(ref),
+                          child: const Text(
+                            'Register now',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                  const SizedBox(height: 50),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      // Google button
-                      SquareTile(imagePath: 'assets/images/google.png'),
-                      SizedBox(width: 25),
-                      // Apple button
-                      SquareTile(imagePath: 'assets/images/apple.png')
-                    ],
-                  ),
-                  const SizedBox(height: 50),
-                  // Create account
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Not a member?',
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                      const SizedBox(width: 4),
-                      const Text(
-                        'Register now',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             );
           },
