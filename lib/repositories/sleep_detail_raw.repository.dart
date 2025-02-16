@@ -42,17 +42,17 @@ class SleepDetailRawRepository {
     */
 
     return [
-      SleepDetailRaw(phase: LIGHT_SLEEP_INDEX, duration: 20),
-      SleepDetailRaw(phase: AWAKE_INDEX, duration: 5),
-      SleepDetailRaw(phase: LIGHT_SLEEP_INDEX, duration: 35),
-      SleepDetailRaw(phase: DEEP_SLEEP_INDEX, duration: 35),
-      SleepDetailRaw(phase: LIGHT_SLEEP_INDEX, duration: 25),
-      SleepDetailRaw(phase: REM_INDEX, duration: 60),
-      SleepDetailRaw(phase: AWAKE_INDEX, duration: 10),
-      SleepDetailRaw(phase: LIGHT_SLEEP_INDEX, duration: 110),
-      SleepDetailRaw(phase: AWAKE_INDEX, duration: 5),
-      SleepDetailRaw(phase: DEEP_SLEEP_INDEX, duration: 25),
-      SleepDetailRaw(phase: LIGHT_SLEEP_INDEX, duration: 90),
+      const SleepDetailRaw(phase: LIGHT_SLEEP_INDEX, duration: 20),
+      const SleepDetailRaw(phase: AWAKE_INDEX, duration: 5),
+      const SleepDetailRaw(phase: LIGHT_SLEEP_INDEX, duration: 35),
+      const SleepDetailRaw(phase: DEEP_SLEEP_INDEX, duration: 35),
+      const SleepDetailRaw(phase: LIGHT_SLEEP_INDEX, duration: 25),
+      const SleepDetailRaw(phase: REM_INDEX, duration: 60),
+      const SleepDetailRaw(phase: AWAKE_INDEX, duration: 10),
+      const SleepDetailRaw(phase: LIGHT_SLEEP_INDEX, duration: 110),
+      const SleepDetailRaw(phase: AWAKE_INDEX, duration: 5),
+      const SleepDetailRaw(phase: DEEP_SLEEP_INDEX, duration: 25),
+      const SleepDetailRaw(phase: LIGHT_SLEEP_INDEX, duration: 90),
     ];
   }
 }

@@ -66,17 +66,20 @@ class SleepDetailsChartsWidget extends StatelessWidget {
     final int difference = 100 - totalPercentage;
     if (difference != 0) {
       // Find the stage with the largest percentage and adjust it
-      final maxStage = roundedPercentages.reduce((max, stage) =>
-          stage['percentage'] > max['percentage'] ? stage : max);
+      final maxStage = roundedPercentages.reduce(
+        (max, stage) => stage['percentage'] > max['percentage'] ? stage : max,
+      );
 
       maxStage['percentage'] += difference;
     }
 
     final List<Map<String, dynamic>> sleepStagesWithLabel = roundedPercentages
-        .map((entry) => {
-              ...entry,
-              'label': getSleepLabel(entry['phase']),
-            })
+        .map(
+          (entry) => {
+            ...entry,
+            'label': getSleepLabel(entry['phase']),
+          },
+        )
         .toList();
 
     return Column(
@@ -107,7 +110,7 @@ class SleepDetailsChartsWidget extends StatelessWidget {
               ),
             ),
           ],
-        )
+        ),
       ],
     );
   }

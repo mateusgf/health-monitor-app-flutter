@@ -32,7 +32,7 @@ class SleepStageWidget extends StatelessWidget {
     };
 
     return Center(
-      child: Container(
+      child: SizedBox(
         width: containerWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +43,7 @@ class SleepStageWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('${stage['label']} ${stage['percentage']}%'),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Container(
                     color: getSleepStageColor(stage['phase']),
                     width: containerWidth * (stage['percentage'] / 100),

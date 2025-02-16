@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'package:health_monitor_app_flutter/firebase_options.dart';
 
 Future main() async {
   logger.i('Starting main...');
@@ -26,7 +26,7 @@ Future main() async {
   // @TODO remove hardcoded locale
   LocaleSettings.setLocaleRaw('pt');
 
-  await dotenv.load(fileName: ".env.dev");
+  await dotenv.load(fileName: '.env.dev');
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -55,8 +55,8 @@ class MyApp extends ConsumerWidget {
       // So it's better to use the supportedLocales from the app itself.
       // supportedLocales: AppLocaleUtils.supportedLocales,
       supportedLocales: [
-        Locale('en'),
-        Locale('pt'),
+        const Locale('en'),
+        const Locale('pt'),
       ],
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,

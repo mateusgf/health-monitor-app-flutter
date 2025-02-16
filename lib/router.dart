@@ -46,7 +46,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       // List of routes that don't require authentication
       final allowedRoutes = [
         appRoutesPath(AppRoute.login),
-        appRoutesPath(AppRoute.register)
+        appRoutesPath(AppRoute.register),
       ];
 
       final isAllowedRoute = allowedRoutes.contains(state.uri.toString());
@@ -92,7 +92,8 @@ final routerProvider = Provider<GoRouter>((ref) {
           final id = state.pathParameters['id'];
           return MaterialPage(
             child: AuthWrapper(
-                authenticatedChild: SleepTrackingDetailScreen(id: id)),
+              authenticatedChild: SleepTrackingDetailScreen(id: id),
+            ),
           );
         },
       ),
