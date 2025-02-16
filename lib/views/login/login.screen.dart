@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_monitor_app_flutter/router.dart';
+import 'package:health_monitor_app_flutter/services/auth_service.dart';
 import 'package:health_monitor_app_flutter/views/components/health_button.dart';
 import 'package:health_monitor_app_flutter/views/components/health_textfield.dart';
 import 'package:health_monitor_app_flutter/views/components/square_tile.dart';
@@ -70,12 +71,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void wrongCredentials() {
     showDialog(
-        context: context,
-        builder: (context) {
-          return const AlertDialog(
-            title: Text('Wrong credentials'),
-          );
-        });
+      context: context,
+      builder: (context) {
+        return const AlertDialog(
+          title: Text('Wrong credentials'),
+        );
+      },
+    );
   }
 
   void goToRegisterScreen(WidgetRef ref) {
@@ -138,12 +140,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     // Sign in button
                     HealthButton(
                       onTap: () => signUserIn(ref),
-                      child: Text("Sign In",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          )),
+                      child: const Text(
+                        'Sign In',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 50),
                     // Or continue with
@@ -175,14 +179,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 50),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         // Google button
-                        SquareTile(imagePath: 'assets/images/google.png'),
-                        SizedBox(width: 25),
+                        SquareTile(
+                          onTap: () => AuthService().signInWithGoogle(),
+                          imagePath: 'assets/images/google.png',
+                        ),
+                        const SizedBox(width: 25),
                         // Apple button
-                        SquareTile(imagePath: 'assets/images/apple.png')
+                        SquareTile(
+                          onTap: () => AuthService().signInWithApple(),
+                          imagePath: 'assets/images/apple.png',
+                        ),
                       ],
                     ),
                     const SizedBox(height: 50),
@@ -206,7 +216,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -43,12 +43,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
       });
 
       showDialog(
-          context: context,
-          builder: (context) {
-            return const AlertDialog(
-              title: Text('Passwords do not match'),
-            );
-          });
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            title: Text('Passwords do not match'),
+          );
+        },
+      );
       return;
     }
 
@@ -74,13 +75,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
       });
 
       showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: Text('Registration Error'),
-              content: Text(e.message ?? 'An error occurred'),
-            );
-          });
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Registration Error'),
+            content: Text(e.message ?? 'An error occurred'),
+          );
+        },
+      );
     }
   }
 
@@ -101,7 +103,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(height: 50),
-                    // Logo
                     const Icon(
                       Icons.app_registration,
                       size: 100,
@@ -138,12 +139,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     // Register button
                     HealthButton(
                       onTap: registerUser,
-                      child: const Text("Register",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          )),
+                      child: const Text(
+                        'Register',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 50),
                     // Already have an account
@@ -166,7 +169,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -28,8 +28,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final sleepTracksAsync = ref.watch(sleepTracksProvider);
-
     final dailyGoalDataRepository = DailyGoalDataRepository();
     final dailyGoalData = dailyGoalDataRepository.getDailyGoalData();
 
@@ -54,7 +52,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         actions: [
           IconButton(
             onPressed: logout,
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
           ),
         ],
       ),
@@ -63,7 +61,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           // @TODO: remove this
           Center(
             child: Text(
-                'Current Locale: ${currentLocale.languageCode}-${currentLocale.countryCode}'),
+              'Current Locale: ${currentLocale.languageCode}-${currentLocale.countryCode}',
+            ),
           ),
           ElevatedButton.icon(
             onPressed: () {

@@ -15,7 +15,7 @@ class HealthButton extends StatelessWidget {
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.symmetric(horizontal: 25),
         decoration: BoxDecoration(
-          color: Color(0xFFCCAFA5),
+          color: const Color(0xFFCCAFA5),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
