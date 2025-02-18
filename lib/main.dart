@@ -4,7 +4,6 @@ import 'package:health_monitor_app_flutter/logger.dart';
 import 'package:health_monitor_app_flutter/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:health_monitor_app_flutter/firebase_options.dart';
