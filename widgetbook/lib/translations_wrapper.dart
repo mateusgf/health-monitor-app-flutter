@@ -5,8 +5,8 @@ class TranslationsWrapper extends StatelessWidget {
   final Widget child;
   final String lang;
 
-  const TranslationsWrapper({Key? key, required this.child, required this.lang})
-      : super(key: key);
+  const TranslationsWrapper(
+      {super.key, required this.child, required this.lang});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
