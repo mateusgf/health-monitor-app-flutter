@@ -48,7 +48,7 @@ dependencies:
   slang: ^4.4.1
   slang_flutter: ^4.4.0
   syncfusion_flutter_charts: ^28.2.6
-  widgetbook: ^3.10.2
+  widgetbook: ^3.11.0
 
 dev_dependencies:
   flutter_test:
