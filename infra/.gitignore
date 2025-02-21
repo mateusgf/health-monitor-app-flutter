@@ -1,0 +1,13 @@
+firebase-service-account.json
+# Terraform local files
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+
+.terraform.lock
+
+# Local environment files
+*.tfvars
+*.tfvars.json
+
+secrets.tfvars

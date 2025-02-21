@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:health_monitor_app_flutter/logger.dart';
 import 'package:health_monitor_app_flutter/router.dart';
 import 'package:health_monitor_app_flutter/services/auth_service.dart';
 import 'package:health_monitor_app_flutter/views/components/health_button.dart';
@@ -47,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       ref.read(routerProvider).go(appRoutesPath(AppRoute.home));
     } on FirebaseAuthException catch (e) {
-      print('Error: $e');
+      logger.e('Error: $e');
 
       Navigator.pop(context);
       setState(() {
@@ -62,9 +63,9 @@ class _LoginScreenState extends State<LoginScreen> {
     // Listen to auth state changes // @TODO: remove
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        print('User is currently signed out!');
+        logger.i('User is currently signed out!');
       } else {
-        print('User is signed in!');
+        logger.i('User is signed in!');
       }
     });
   }

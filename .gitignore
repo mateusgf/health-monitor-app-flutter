@@ -51,3 +51,4 @@ firebase.json
 GoogleService-Info.plist
 google-services.json
 firebase_options.dart
+ios/Flutter/Secrets.xcconfig

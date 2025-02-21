@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:health_monitor_app_flutter/gen/strings.g.dart';
+import 'package:health_monitor_app_flutter/logger.dart';
 import 'package:health_monitor_app_flutter/providers/repositories.provider.dart';
 import 'package:health_monitor_app_flutter/router.dart';
 import 'package:health_monitor_app_flutter/views/components/goal_stat_row.dart';
@@ -21,7 +22,7 @@ class HomeScreen extends ConsumerWidget {
   }
 
   void _syncDataWithDevice() {
-    print('Sync data with wearable device using bluetooth');
+    logger.i('Sync data with wearable device using bluetooth');
   }
 
   void _openBluetoothSettings() {
@@ -34,7 +35,7 @@ class HomeScreen extends ConsumerWidget {
         throw Exception(t.home.error_platform_not_supported);
       }
     } catch (e) {
-      debugPrint('Error opening bluetooth settings: $e');
+      logger.e('Error opening bluetooth settings: $e');
     }
   }
 

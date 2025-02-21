@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:health_monitor_app_flutter/logger.dart';
 import 'package:health_monitor_app_flutter/views/home/home.screen.dart';
 import 'package:health_monitor_app_flutter/views/login/login.screen.dart';
 import 'package:health_monitor_app_flutter/views/onboarding/onboarding.screen.dart';
@@ -53,7 +54,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       final isAuthenticated = FirebaseAuth.instance.currentUser != null;
 
-      print('User in redirect ${FirebaseAuth.instance.currentUser}');
+      logger.i('User in redirect ${FirebaseAuth.instance.currentUser}');
 
       if (!isAllowedRoute && !isAuthenticated) {
         return appRoutesPath(AppRoute.login);
