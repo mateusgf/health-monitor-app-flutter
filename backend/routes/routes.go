@@ -15,6 +15,18 @@ func SetupRouter() *gin.Engine {
 	r.PUT("/sleep/:id", controllers.UpdateSleepHistory)
 	r.DELETE("/sleep/:id", controllers.DeleteSleepHistory)
 
+	r.POST("/user_goal", controllers.CreateDailyGoal)
+	r.GET("/user_goal", controllers.GetLastDailyGoalByUser)
+	r.GET("/user_goal/:id", controllers.GetDailyGoalByID)
+	r.PUT("/user_goal/:id", controllers.UpdateDailyGoal)
+	r.DELETE("/user_goal/:id", controllers.DeleteDailyGoal)
+
+	r.POST("/user_daily_data", controllers.CreateDailyData)
+	r.GET("/user_daily_data/:id", controllers.GetDailyDataByID)
+	r.GET("/user_daily_data/user_goal/:user_goal_id", controllers.GetDailyDataByUserGoalID)
+	r.PUT("/user_daily_data/:id", controllers.UpdateDailyData)
+	r.DELETE("/user_daily_data/:id", controllers.DeleteDailyData)
+
 	r.GET("/sleep_history", func(c *gin.Context) {
 		response := []map[string]interface{}{
 			{
