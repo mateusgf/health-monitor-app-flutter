@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:health_monitor_app_flutter/logger.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
@@ -17,8 +18,8 @@ class WidgetbookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('DefaultWidgetsLocalizations: $DefaultWidgetsLocalizations');
-    print('DefaultMaterialLocalizations: $DefaultMaterialLocalizations');
+    logger.i('DefaultWidgetsLocalizations: $DefaultWidgetsLocalizations');
+    logger.i('DefaultMaterialLocalizations: $DefaultMaterialLocalizations');
 
     return Widgetbook.material(
       directories: directories,

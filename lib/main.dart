@@ -40,8 +40,10 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print('flutterLocale ${TranslationProvider.of(context).flutterLocale}');
-    print('AppLocaleUtils.supportedLocales ${AppLocaleUtils.supportedLocales}');
+    logger.i('flutterLocale ${TranslationProvider.of(context).flutterLocale}');
+    logger.i(
+      'AppLocaleUtils.supportedLocales ${AppLocaleUtils.supportedLocales}',
+    );
 
     return MaterialApp.router(
       // This is the main language of the phone itself and not the app (Even if locale is forced/hardcoded at startup).

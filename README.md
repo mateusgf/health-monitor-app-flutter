@@ -8,7 +8,15 @@ UI built using Flutter.
 To start the project, do the instalation of iOS and Android SDK, open this repo code in VS Code then install Flutter extensions for VS code and start the project by pressing F5 (Or from the Run > Start Debugging menu).
 
 Copy the .env variable
-`cp .env.dev .env`
+```
+cp .env.dev .env
+```
+
+and for firebase authentication:
+
+```
+cp ios/Flutter/Secrets.xcconfig.example ios/Flutter/Secrets.xcconfig
+```
 
 - **State Management** by [Riverpod](https://pub.dev/packages/riverpod)
 - **Data classes** by [Freezed](https://pub.dev/packages/freezed)
@@ -23,16 +31,22 @@ Copy the .env variable
 
 ### Useful commands
 
-`flutter pub get`
+```
+cd ios
+flutter clean
+rm -rf Pods Podfile.lock
+
+cd ..
+flutter pub get
+
+cd ios
+pod install
+```
 
 In a majority of those dependencies, code generation is used, so your best friend will be `dart run build_runner watch -d` which will run in background during all the dev phase of the project
 
 `dart run build_runner watch -d`
-`flutter pub run build_runner build --delete-conflicting-outputs`
 
-`flutter pub upgrade && flutter clean && flutter pub cache clean`
-
-`pod update PurchasesHybridCommon`
 
 Widgetbook commands:
 
