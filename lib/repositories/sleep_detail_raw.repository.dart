@@ -1,22 +1,31 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:health_monitor_app_flutter/constants/sleep_tracking_constants.dart';
+import 'package:health_monitor_app_flutter/data/api_client.dart';
 import 'package:health_monitor_app_flutter/models/sleep_detail_raw.model.dart';
+import 'package:health_monitor_app_flutter/services/auth_exception.dart';
 
 class SleepDetailRawRepository {
-  final requestClient;
+  final ApiClient requestClient;
 
   SleepDetailRawRepository(this.requestClient);
 
   Future<List<SleepDetailRaw>> fetchSleepDetailRaw(int id) async {
     try {
-      final response = await requestClient.get('/sleep_detail/$id');
-      final List<dynamic> data = response.data;
+      final response = await requestClient.request(
+        'GET',
+        '/sleep_detail/$id',
+        requiresAuth: true,
+      );
 
+      final List<dynamic> data = response.data;
       return data
           .map((json) => SleepDetailRaw.fromJson(json as Map<String, dynamic>))
           .toList();
     } on DioException catch (e) {
+      if (e.response?.statusCode == 401) {
+        throw AuthException('Your session has expired. Please sign in again.');
+      }
       throw Exception('Failed to fetch sleep history: ${e.message}');
     }
   }
