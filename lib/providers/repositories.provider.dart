@@ -7,7 +7,7 @@ import 'package:health_monitor_app_flutter/repositories/sleep_history.repository
 import 'package:health_monitor_app_flutter/models/sleep_history.model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final requestClient = ApiClient().dio;
+final requestClient = ApiClient();
 
 final localDataRepositoryProvider = Provider<LocalDataRepository>((_) {
   return LocalDataRepository();
