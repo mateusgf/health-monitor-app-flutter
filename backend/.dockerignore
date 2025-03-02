@@ -1,0 +1,9 @@
+/bin/
+/pkg/
+/vendor/
+/tmp/
+*.log
+*.swp
+.git
+.vscode
+.idea

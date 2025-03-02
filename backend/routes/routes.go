@@ -20,10 +20,19 @@ func GetUserInfo(c *gin.Context) {
 	})
 }
 
+func HealthCheck(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"success": true,
+		"message": "Golang backend is running",
+	})
+}
+
 func SetupRouter() *gin.Engine {
 	middleware.InitFirebase()
 
 	r := gin.Default()
+
+	r.GET("/healthcheck", HealthCheck)
 
 	protected := r.Group("/api")
 	protected.Use(middleware.AuthMiddleware())
