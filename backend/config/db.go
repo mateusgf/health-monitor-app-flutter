@@ -12,7 +12,13 @@ import (
 var DB *gorm.DB
 
 func InitDB() {
+	useDocker := os.Getenv("DB_USE_DOCKER")
+
 	host := os.Getenv("DB_HOST")
+	if useDocker == "true" {
+		host = "postgres_localhost_dev" // Service name in the docker-compose
+	}
+
 	user := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASSWORD")
 	dbname := os.Getenv("DB_NAME")

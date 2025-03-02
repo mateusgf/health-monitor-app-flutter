@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  postgres_localhost_dev:
+    image: postgres:16
+    container_name: bhealth-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d health"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: bhealth-golang
+    depends_on:
+      postgres_localhost_dev:
+        condition: service_healthy  # Waits for Postgres health check
+    environment:
+      DB_USE_DOCKER: "true"
+    ports:
+      - "8081:8081"
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/healthcheck"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
