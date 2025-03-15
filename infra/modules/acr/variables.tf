@@ -8,12 +8,3 @@ variable "location" {
   type        = string
 }
 
-variable "subnet_id" {
-  description = "Subnet ID for AKS"
-  type        = string
-}
-
-variable "acr_id" {
-  description = "ACR ID for AKS"
-  type        = string
-}
