@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: golang-backend
+  template:
+    metadata:
+      labels:
+        app: golang-backend
+    spec:
+      containers:
+      - name: golang-backend
+        image: "TODO: read from terraform or kubernetes secrets"
+        ports:
+        - containerPort: 8081
+        env:
+        - name: DB_HOST
+          value: "TODO: read from terraform or kubernetes secrets"
+        - name: DB_USER
+          value: "TODO: read from terraform or kubernetes secrets"
+        - name: DB_PASSWORD
+          value: "TODO: read from terraform or kubernetes secrets"
+        - name: DB_NAME
+          value: "TODO: read from terraform or kubernetes secrets"
+        - name: DB_PORT
+          value: "5432"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: golang-backend-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: golang-backend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8081

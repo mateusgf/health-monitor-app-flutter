@@ -1,16 +1,3 @@
-resource "random_password" "db_admin_password" {
-  length           = 16
-  special          = true
-  upper            = true
-  lower            = true
-  numeric          = true
-  min_special      = 2
-  min_upper        = 2
-  min_lower        = 2
-  min_numeric      = 2
-  override_special = "!@#$%"
-}
-
 resource "azurerm_key_vault" "main" {
   name                       = "bhealth-vault-tf-managed"
   location                   = var.location
@@ -36,10 +23,4 @@ resource "azurerm_key_vault" "main" {
       "Get", "List", "Create", "Delete", "Update", "Import", "Backup", "Restore", "Recover", "Purge"
     ]
   }
-}
-
-resource "azurerm_key_vault_secret" "db_admin_password" {
-  name         = "db-admin-password"
-  value        = random_password.db_admin_password.result
-  key_vault_id = azurerm_key_vault.main.id
 }

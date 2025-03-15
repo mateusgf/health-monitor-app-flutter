@@ -11,3 +11,5 @@ terraform.tfstate.backup
 *.tfvars.json
 
 secrets.tfvars
+
+.envrc
