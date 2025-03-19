@@ -1,4 +1,5 @@
 export TF_VAR_firebase_credentials_path="firebase-service-account.json"
 export TF_VAR_google_project_id="app-1111"
 export TF_VAR_subscription_id="xxxx-xxx"
+export CONTAINER_IMAGE="x.azurecr.io/xx-xx:latest"
 

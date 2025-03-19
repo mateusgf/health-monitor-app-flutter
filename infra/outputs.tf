@@ -17,3 +17,10 @@ output "get_credentials_command" {
 output "kube-tunnel" {
   value = "kube-tunnel -context ${module.aks.cluster_name} ${module.database.server_fqdn} 5432 14000"
 }
+
+output "aks_client_id" {
+  value = module.aks.client_id
+}
+output "aks_principal_id" {
+  value = module.aks.principal_id
+}

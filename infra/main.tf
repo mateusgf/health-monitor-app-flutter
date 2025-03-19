@@ -53,6 +53,15 @@ module "aks" {
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   subnet_id           = module.networking.aks_subnet_id
-  acr_id              = module.acr.acr_id 
-  depends_on          = [module.networking, module.acr]
+  acr_id              = module.acr.acr_id
+  key_vault_id         = module.keyvault.key_vault_id
+  keyvault_name       = module.keyvault.keyvault_name
+  tenant_id            = data.azurerm_client_config.current.tenant_id
+  depends_on          = [module.networking, module.acr, module.keyvault]
+
+  providers = {
+    kubernetes = kubernetes
+    kubectl    = kubectl
+    helm       = helm
+  }
 }
