@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: golang-backend
+  namespace: default
 spec:
   replicas: 2
   selector:
@@ -11,23 +12,47 @@ spec:
     metadata:
       labels:
         app: golang-backend
+      annotations:
+        azure.workload.identity/use: "true"
     spec:
+      serviceAccountName: golang-backend-sa
+      volumes:
+        - name: secrets-store
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "azure-keyvault-secrets"
       containers:
-      - name: golang-backend
-        image: "TODO: read from terraform or kubernetes secrets"
-        ports:
-        - containerPort: 8081
-        env:
-        - name: DB_HOST
-          value: "TODO: read from terraform or kubernetes secrets"
-        - name: DB_USER
-          value: "TODO: read from terraform or kubernetes secrets"
-        - name: DB_PASSWORD
-          value: "TODO: read from terraform or kubernetes secrets"
-        - name: DB_NAME
-          value: "TODO: read from terraform or kubernetes secrets"
-        - name: DB_PORT
-          value: "5432"
+        - name: golang-backend
+          image: ${CONTAINER_IMAGE}
+          ports:
+            - containerPort: 8081
+          volumeMounts:
+            - name: secrets-store
+              mountPath: "/mnt/secrets-store"
+              readOnly: true
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: azure-keyvault-secrets
+                  key: tf-managed-db-user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: azure-keyvault-secrets
+                  key: tf-managed-db-admin-password
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: azure-keyvault-secrets
+                  key: tf-managed-db-host
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: azure-keyvault-secrets
+                  key: tf-managed-db-name
 
 ---
 apiVersion: v1

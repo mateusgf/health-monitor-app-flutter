@@ -16,6 +16,18 @@ terraform {
       source  = "cyrilgdn/postgresql"
       version = "~> 1.21.0"
     }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = ">= 2.0"
+    }
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = "~> 1.14"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 2.0"
+    }
   }
   required_version = ">= 1.3"
 }
@@ -31,3 +43,26 @@ provider "google" {
 }
 
 provider "random" {}
+
+provider "kubernetes" {
+  host                   = module.aks.aks_kube_config.host
+  client_certificate     = base64decode(module.aks.aks_kube_config.client_certificate)
+  client_key             = base64decode(module.aks.aks_kube_config.client_key)
+  cluster_ca_certificate = base64decode(module.aks.aks_kube_config.cluster_ca_certificate)
+}
+
+provider "kubectl" {
+  host                   = module.aks.aks_kube_config.host
+  client_certificate     = base64decode(module.aks.aks_kube_config.client_certificate)
+  client_key             = base64decode(module.aks.aks_kube_config.client_key)
+  cluster_ca_certificate = base64decode(module.aks.aks_kube_config.cluster_ca_certificate)
+}
+
+provider "helm" {
+  kubernetes {
+    host                   = module.aks.aks_kube_config.host
+    client_certificate     = base64decode(module.aks.aks_kube_config.client_certificate)
+    client_key             = base64decode(module.aks.aks_kube_config.client_key)
+    cluster_ca_certificate = base64decode(module.aks.aks_kube_config.cluster_ca_certificate)
+  }
+}
