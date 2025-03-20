@@ -25,7 +25,7 @@ dependencies:
   chart_view: ^0.0.2
   collection: ^1.19.1
   dio: ^5.8.0+1
-  firebase_auth: ^5.4.2
+  firebase_auth: ^5.5.1
   firebase_core: ^3.12.1
   fl_chart: ^0.70.2
   flutter:
