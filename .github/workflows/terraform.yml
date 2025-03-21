@@ -12,6 +12,9 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      TF_VAR_firebase_credentials_path: ${{ secrets.TF_VAR_FIREBASE_CREDENTIALS_PATH }}
+      TF_VAR_google_project_id: ${{ secrets.TF_VAR_GOOGLE_PROJECT_ID }}
+      TF_VAR_subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     steps:
       - name: Checkout code
