@@ -1,0 +1,38 @@
+name: Terraform Infrastructure
+
+on:
+  workflow_dispatch: # Will make it manually triggered
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.10.5
+
+      - name: Terraform Init
+        working-directory: ./infra
+        run: terraform init
+
+      - name: Terraform Format
+        working-directory: ./infra
+        run: terraform fmt -check
+
+      - name: Terraform Plan
+        working-directory: ./infra
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        working-directory: ./infra
+        run: terraform apply -auto-approve tfplan
