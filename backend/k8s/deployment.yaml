@@ -37,22 +37,22 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: azure-keyvault-secrets
-                  key: tf-managed-db-user
+                  key: tf-generated-db-user
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: azure-keyvault-secrets
-                  key: tf-managed-db-admin-password
+                  key: tf-generated-db-admin-password
             - name: DB_HOST
               valueFrom:
                 secretKeyRef:
                   name: azure-keyvault-secrets
-                  key: tf-managed-db-host
+                  key: tf-generated-db-host
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
                   name: azure-keyvault-secrets
-                  key: tf-managed-db-name
+                  key: tf-generated-db-name
 
 ---
 apiVersion: v1

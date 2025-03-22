@@ -11,11 +11,6 @@ resource "random_password" "postgres_admin_password" {
   override_special = "!@#$%"
 }
 
-data "azurerm_key_vault_secret" "postgres_admin_password" {
-  name         = "tf-managed-db-admin-password"
-  key_vault_id = var.key_vault_id
-}
-
 resource "azurerm_postgresql_flexible_server" "postgres" {
   name                   = "bhealth-postgres"
   resource_group_name    = var.resource_group_name

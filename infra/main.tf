@@ -59,9 +59,4 @@ module "aks" {
   tenant_id           = data.azurerm_client_config.current.tenant_id
   depends_on          = [module.networking, module.acr, module.keyvault]
 
-  providers = {
-    kubernetes = kubernetes
-    kubectl    = kubectl
-    helm       = helm
-  }
 }

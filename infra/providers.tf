@@ -43,26 +43,3 @@ provider "google" {
 }
 
 provider "random" {}
-
-provider "kubernetes" {
-  host                   = module.aks.aks_kube_config.host
-  client_certificate     = base64decode(module.aks.aks_kube_config.client_certificate)
-  client_key             = base64decode(module.aks.aks_kube_config.client_key)
-  cluster_ca_certificate = base64decode(module.aks.aks_kube_config.cluster_ca_certificate)
-}
-
-provider "kubectl" {
-  host                   = module.aks.aks_kube_config.host
-  client_certificate     = base64decode(module.aks.aks_kube_config.client_certificate)
-  client_key             = base64decode(module.aks.aks_kube_config.client_key)
-  cluster_ca_certificate = base64decode(module.aks.aks_kube_config.cluster_ca_certificate)
-}
-
-provider "helm" {
-  kubernetes {
-    host                   = module.aks.aks_kube_config.host
-    client_certificate     = base64decode(module.aks.aks_kube_config.client_certificate)
-    client_key             = base64decode(module.aks.aks_kube_config.client_key)
-    cluster_ca_certificate = base64decode(module.aks.aks_kube_config.cluster_ca_certificate)
-  }
-}
