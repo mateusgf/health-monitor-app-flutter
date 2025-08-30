@@ -1,0 +1,1 @@
+DROP TABLE heart_rate_measurements;
