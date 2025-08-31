@@ -57,6 +57,61 @@ func SetupRouter() *gin.Engine {
 		protected.PUT("/user_daily_data/:id", controllers.UpdateDailyData)
 		protected.DELETE("/user_daily_data/:id", controllers.DeleteDailyData)
 
+		protected.POST("/heart_rate", controllers.CreateHeartRateMeasurement)
+		protected.GET("/heart_rate", controllers.GetLastHeartRateMeasurementByUser)
+		protected.GET("/heart_rate/report", controllers.GetHeartRateMeasurementsByUserAndDateRange)
+		protected.GET("/heart_rate/stats", controllers.GetHeartRateStatsByUser)
+
+		protected.GET("/training_type", controllers.GetTrainingTypes)
+
+		protected.POST("/training_session", controllers.CreateTrainingSession)
+		protected.GET("/training_session", controllers.GetTrainingSessionsByUser)
+		protected.GET("/training_session/:id", controllers.GetTrainingSessionByID)
+		protected.DELETE("/training_session/:id", controllers.DeleteTrainingSession)
+		protected.GET("/training_session/stats", controllers.GetTrainingSessionStatsByUser)
+		protected.GET("/training_session/stats_breakdown", controllers.GetTrainingSessionStatsWithBreakdown)
+		protected.GET("/training_session/stats_summary", controllers.GetTrainingSessionStatsWithSummary)
+		/**
+			example response for /training_session/stats_summary
+			{
+			  "user_id": "abc123",
+			  "start": "2025-08-01T00:00:00Z",
+			  "end": "2025-08-30T23:59:59Z",
+			  "group_by": "day",
+			  "global_totals": [
+			    { "training_type_id": 1, "training_type_name": "Cardio", "total_duration_minutes": 450 },
+			    { "training_type_id": 2, "training_type_name": "Strength", "total_duration_minutes": 320 }
+			  ],
+			  "breakdown": [
+			    { "period": "2025-08-01", "training_type_id": 1, "training_type_name": "Cardio", "total_duration_minutes": 60 },
+			    { "period": "2025-08-01", "training_type_id": 2, "training_type_name": "Strength", "total_duration_minutes": 30 },
+			    { "period": "2025-08-02", "training_type_id": 1, "training_type_name": "Cardio", "total_duration_minutes": 45 }
+			  ]
+			}
+		**/
+		protected.GET("/training_session/stats_last_days", controllers.GetTrainingSessionStatsLastNDays)
+		/**
+		GET /api/training_session/stats_last_days?user_id=abc123
+		GET /api/training_session/stats_last_days?user_id=abc123&training_type_id=1&days=30&group_by=week
+		GET /api/training_session/stats_summary?user_id=abc123&start=2025-08-01T00:00:00Z&end=2025-08-30T23:59:59Z&training_type_id=2
+
+		example response for /training_session/stats_last_days
+		{
+		  "user_id": "abc123",
+		  "start": "2025-08-24T00:00:00Z",
+		  "end": "2025-08-30T23:59:59Z",
+		  "group_by": "day",
+		  "global_totals": [
+		    { "training_type_id": 1, "training_type_name": "Cardio", "total_duration_minutes": 210 },
+		    { "training_type_id": 2, "training_type_name": "Strength", "total_duration_minutes": 120 }
+		  ],
+		  "breakdown": [
+		    { "period": "2025-08-24", "training_type_id": 1, "training_type_name": "Cardio", "total_duration_minutes": 30 },
+		    { "period": "2025-08-24", "training_type_id": 2, "training_type_name": "Strength", "total_duration_minutes": 20 }
+		  ]
+		}
+		**/
+
 		// @TODO: remove mocked values once DB is complete
 		protected.GET("/sleep_history", func(c *gin.Context) {
 			response := []map[string]interface{}{
