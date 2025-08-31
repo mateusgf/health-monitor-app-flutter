@@ -1,11 +1,14 @@
 package controllers
 
 import (
+	"encoding/json"
 	"health-monitor-app-go-backend/config"
+	"health-monitor-app-go-backend/messaging"
 	"health-monitor-app-go-backend/models"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	amqp "github.com/streadway/amqp"
 )
 
 func CreateDailyData(c *gin.Context) {
@@ -15,12 +18,28 @@ func CreateDailyData(c *gin.Context) {
 		return
 	}
 
-	if err := config.DB.Create(&dailyData).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	// Normalize date to remove time part
+	dailyData.Date = dailyData.Date.UTC().Truncate(24 * 60 * 60)
+
+	// Publish to RabbitMQ
+	body, _ := json.Marshal(dailyData)
+	err := messaging.Channel.Publish(
+		"user_daily_data_exchange",
+		"", // routing key (fanout)
+		false,
+		false,
+		amqp.Publishing{
+			ContentType: "application/json",
+			Body:        body,
+		},
+	)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to publish to queue"})
 		return
 	}
 
-	c.JSON(http.StatusCreated, dailyData)
+	c.JSON(http.StatusAccepted, gin.H{"status": "queued"})
 }
 
 func GetDailyDataByID(c *gin.Context) {

@@ -1,0 +1,1 @@
+DROP INDEX idx_user_daily_data_user_date;

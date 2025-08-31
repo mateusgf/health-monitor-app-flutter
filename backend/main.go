@@ -2,6 +2,8 @@ package main
 
 import (
 	"health-monitor-app-go-backend/config"
+	"health-monitor-app-go-backend/consumers"
+	"health-monitor-app-go-backend/messaging"
 	"health-monitor-app-go-backend/routes"
 	"log"
 	"os"
@@ -21,6 +23,12 @@ func main() {
 	}
 
 	config.InitDB()
+
+	// RabbitMQ setup
+	messaging.InitRabbitMQ()
+	consumers.ConsumeHeartRateMeasurements(messaging.Channel)
+	consumers.ConsumeUserDailyData(messaging.Channel)
+
 	r := routes.SetupRouter()
 	r.Run(":8081")
 }
