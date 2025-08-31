@@ -1,14 +1,45 @@
 package controllers
 
 import (
+	"encoding/json"
 	"health-monitor-app-go-backend/config"
 	"health-monitor-app-go-backend/models"
 	"net/http"
 
+	"health-monitor-app-go-backend/messaging"
+
 	"github.com/gin-gonic/gin"
+	amqp "github.com/streadway/amqp"
 )
 
 func CreateHeartRateMeasurement(c *gin.Context) {
+	var hr models.HeartRateMeasurement
+	if err := c.ShouldBindJSON(&hr); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	body, _ := json.Marshal(hr)
+	err := messaging.Channel.Publish(
+		"heart_rate_exchange",
+		"", // routing key (ignored for fanout)
+		false,
+		false,
+		amqp.Publishing{
+			ContentType: "application/json",
+			Body:        body,
+		},
+	)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to publish"})
+		return
+	}
+
+	c.JSON(http.StatusAccepted, gin.H{"status": "queued"})
+}
+
+func CreateHeartRateMeasurementRestful(c *gin.Context) {
 	var hr models.HeartRateMeasurement
 	if err := c.ShouldBindJSON(&hr); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
