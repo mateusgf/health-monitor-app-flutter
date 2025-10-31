@@ -19,9 +19,9 @@ class SleepStageWidget extends StatelessWidget {
     var getSleepStageColor = (int stage) {
       switch (stage) {
         case AWAKE_INDEX:
-          return AWAKE_COLOR;
+          return AWAKE_SLEEP_COLOR;
         case REM_INDEX:
-          return REM_COLOR;
+          return REM_SLEEP_COLOR;
         case LIGHT_SLEEP_INDEX:
           return LIGHT_SLEEP_COLOR;
         case DEEP_SLEEP_INDEX:

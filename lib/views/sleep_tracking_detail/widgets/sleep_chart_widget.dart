@@ -21,12 +21,12 @@ class SleepChartWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     List<SleepModel> lists = [];
     {
-      SleepModel one = SleepModel(AWAKE_COLOR, []);
+      SleepModel one = SleepModel(AWAKE_SLEEP_COLOR, []);
       one.descr = t.sleep.awake;
       lists.add(one);
     }
     {
-      SleepModel one = SleepModel(REM_COLOR, []);
+      SleepModel one = SleepModel(REM_SLEEP_COLOR, []);
       one.descr = t.sleep.rem;
       lists.add(one);
     }

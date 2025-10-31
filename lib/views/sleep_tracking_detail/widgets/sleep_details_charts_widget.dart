@@ -100,17 +100,18 @@ class SleepDetailsChartsWidget extends StatelessWidget {
             ),
           ),
         ),
-        Row(
-          children: [
-            Container(
-              margin: const EdgeInsets.all(20.0),
-              child: SleepStageWidget(
-                containerWidthPercentage: 0.5,
-                sleepStages: sleepStagesWithLabel,
-              ),
-            ),
-          ],
-        ),
+        // @TODO: replace with the new style from SleepStageBarsWidget
+        // Row(
+        //   children: [
+        //     Container(
+        //       margin: const EdgeInsets.all(20.0),
+        //       child: SleepStageWidget(
+        //         containerWidthPercentage: 0.5,
+        //         sleepStages: sleepStagesWithLabel,
+        //       ),
+        //     ),
+        //   ],
+        // ),
       ],
     );
   }

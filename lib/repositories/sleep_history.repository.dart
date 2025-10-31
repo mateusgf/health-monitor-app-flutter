@@ -13,7 +13,7 @@ class SleepHistoryRepository {
       final response = await requestClient.request(
         'GET',
         '/sleep_history',
-        requiresAuth: false,
+        requiresAuth: true,
       );
       final List<dynamic> data = response.data;
 
